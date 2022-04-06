@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Elish Admin Panel</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="../../dist/output.css" rel="stylesheet" />
+    <title>Elish Admin Panel | Schedule Maker</title>
+  </head>
+  <body>
+    <nav class="bg-blue-700 flex justify-start px-3 py-4 sticky top-0">
+      <h1 class="text-white text-2xl font-bold cursor-pointer">
+        Elish Admin Panel
+      </h1>
+    </nav>
+    <div class="mt-10">
+      <div class="py-3">
+        <h1 class="px-5 text-gray-700 text-2xl">Schedule Maker</h1>
+      </div>
+      <div
+        class="px-5 shadow-xl mx-2 my-2 bg-white border border-gray-200 rounded-md"
+      >
+        <form>
+          <div class="flex flex-col">
+            <div
+              class="flex items-center gap-x-3 border-b border-gray-300 pt-3 pb-5"
+            >
+              <label class="font-bold text-lg" for="">Schedule Name : </label>
+              <input
+                type="text"
+                name="schedule_name"
+                maxlength="50"
+                id="schedule_name"
+                class="busnumber shadow-lg appearance-none border rounded w-3/5 lg:w-4/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <!-- Boarding Point -->
+            <div class="flex flex-col gap-y-4 py-2">
+              <h1 class="text-gray-700 text-2xl">Boarding Point :</h1>
+              <!-- Starting City -->
+              <div class="py-2">
+                <label class="font-bold text-lg" for="starting_city"
+                  >Starting City :
+                </label>
+                <input
+                  type="text"
+                  name="starting_city"
+                  maxlength="50"
+                  id="starting_city"
+                  class="busnumber shadow-lg appearance-none border rounded w-3/5 lg:w-4/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+              </div>
+
+              <!-- Day -->
+              <div class="flex flex-col">
+                <div class="py-3">
+                  <label class="font-bold text-lg">Working Days :</label>
+                </div>
+                <div>
+                  <input
+                    class="boarding_day_input"
+                    type="checkbox"
+                    onclick="onClickHandler(this)"
+                    name="sunday"
+                    value="Sunday"
+                  />
+                  <label for="sunday">Sunday</label><br />
+                  <input
+                    class="boarding_day_input"
+                    type="checkbox"
+                    onclick="onClickHandler(this)"
+                    name="monday"
+                    value="Monday"
+                  />
+                  <label for="monday">Monday</label><br />
+                  <input
+                    class="boarding_day_input"
+                    type="checkbox"
+                    onclick="onClickHandler(this)"
+                    name="tuesday"
+                    value="tuesday"
+                  />
+                  <label for="tuesday">Tuesday</label><br />
+                  <input
+                    class="boarding_day_input"
+                    type="checkbox"
+                    onclick="onClickHandler(this)"
+                    name="wednesday"
+                    value="wednesday"
+                  />
+                  <label for="wednesday">Wednesday</label><br />
+                  <input
+                    class="boarding_day_input"
+                    type="checkbox"
+                    onclick="onClickHandler(this)"
+                    name="thursday"
+                    value="thursday"
+                  />
+                  <label for="thursday">Thursday</label><br />
+                  <input
+                    class="boarding_day_input"
+                    type="checkbox"
+                    onclick="onClickHandler(this)"
+                    name="friday"
+                    value="friday"
+                  />
+                  <label for="friday">Friday</label><br />
+                  <input
+                    class="boarding_day_input"
+                    type="checkbox"
+                    onclick="onClickHandler(this)"
+                    name="saturday"
+                    value="saturday"
+                  />
+                  <label for="saturday">Saturday</label><br />
+                  <input
+                    type="checkbox"
+                    onclick="onClickHandler(this)"
+                    name="all"
+                    value="all"
+                  />
+                  <label for="all" class="text-green-700 font-bold">All</label
+                  ><br />
+                </div>
+              </div>
+
+              <!-- Add Location & Time -->
+              <div class="flex flex-col gap-y-3" id="boarding_point_time">
+                <div
+                  class="boardingForm border-2 border-blue-500 rounded-md px-3 py-2"
+                >
+                  <div class="flex items-center gap-x-2">
+                    <label for="time" class="font-bold text-lg"
+                      >Add Boarding Location :
+                    </label>
+                    <input
+                      type="text"
+                      name="DeLocation"
+                      id="deloc"
+                      class="busnumber shadow-lg appearance-none border rounded w-3/5 lg:w-4/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                    <p class="text-red-600/90">Example : Barguna</p>
+                  </div>
+
+                  <div class="flex items-center mt-1 py-2 gap-x-2">
+                    <label for="time" class="font-bold text-lg"
+                      >Add Boarding Time :</label
+                    >
+                    <input
+                      type="time"
+                      name="dtime"
+                      id="dtime"
+                      class="busnumber shadow-lg appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                    <p class="text-red-600/90">Example : 6:00 pm</p>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="button"
+                id="add_boarding_point"
+                class="inline-flex items-center justify-center w-10 h-10 mr-2 text-blue-100 transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800"
+              >
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                  <path
+                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <!-- Dropping Point -->
+            <div class="flex mt-4 flex-col gap-y-4 py-2">
+              <h1 class="text-gray-700 text-2xl">Dropping Point :</h1>
+              <!-- Ending City -->
+              <div class="py-2">
+                <label class="font-bold text-lg" for="">Ending City : </label>
+                <input
+                  type="text"
+                  name="ending_city"
+                  maxlength="50"
+                  id="ending_city"
+                  class="busnumber shadow-lg appearance-none border rounded w-3/5 lg:w-4/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+              </div>
+              <!-- Day -->
+              <div class="flex flex-col mt-6">
+                <div>
+                  <label class="font-bold text-lg">Working Days :</label>
+                </div>
+              </div>
+              <!-- Add Location & Time -->
+
+              <div class="flex flex-col space-y-3" id="dropping_point_time">
+                <div
+                  class="departureForm border-2 border-blue-500 rounded-md px-3 py-2"
+                >
+                  <div class="flex items-center gap-x-2">
+                    <label for="time" class="font-bold text-lg"
+                      >Add Departure Location :
+                    </label>
+                    <input
+                      type="text"
+                      name="dropLocation"
+                      id="dropLocation"
+                      class="busnumber shadow-lg appearance-none border rounded w-3/5 lg:w-4/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                    <p class="text-red-600/90">Example : Motijheel</p>
+                  </div>
+                  <div class="flex items-center py-2 gap-x-2">
+                    <label for="time" class="font-bold text-lg"
+                      >Add Departure Time :</label
+                    >
+                    <input
+                      type="time"
+                      name="droptime"
+                      id="droptime"
+                      class="busnumber shadow-lg appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                    <p class="text-red-600/90">Example : 11:69 pm</p>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                id="add_dropping_point"
+                class="inline-flex items-center justify-center w-10 h-10 mr-2 text-blue-100 transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800"
+              >
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                  <path
+                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <div class="flex justify-start py-2">
+              <button
+                type="button"
+                type="button"
+                id="submit-button"
+                class="hover:bg-blue-500 bg-blue-700 px-2.5 py-1.5 text-white rounded-md text-lg"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Empty form - is hidden - used as a copy node -->
+    <div id="empty-form-boarding" class="hidden">
+      <div class="flex items-center gap-x-2">
+        <label for="time" class="font-bold text-lg"
+          >Add Boarding Location :
+        </label>
+
+        <input
+          type="text"
+          name="DeLocation"
+          id="deloc"
+          class="busnumber shadow-lg appearance-none border rounded w-3/5 lg:w-4/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          required
+        />
+        <p class="text-red-600/90">Example : Barguna</p>
+      </div>
+
+      <div class="flex items-center gap-x-2 py-2">
+        <label for="time" class="font-bold text-lg">Add Boarding Time :</label>
+
+        <input
+          type="time"
+          name="dtime"
+          id="dtime"
+          class="busnumber shadow-lg appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          required
+        />
+        <p class="text-red-600/90">Example : 6:00 pm</p>
+      </div>
+    </div>
+    <!-- Empty form for Boarding Ends -->
+
+    <!-- Empty form - For departure -->
+    <div id="empty-form-departure" class="hidden">
+      <div class="flex items-center gap-x-2">
+        <label for="time" class="font-bold text-lg"
+          >Add Departure Location :
+        </label>
+        <input
+          type="text"
+          name="dropLocation"
+          id="dropLocation"
+          class="busnumber shadow-lg appearance-none border rounded w-3/5 lg:w-4/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        <p class="text-red-600/90">Example : Motijheel</p>
+      </div>
+
+      <div class="flex items-center py-2 gap-x-2">
+        <label for="time" class="font-bold text-lg">Add Departure Time :</label>
+        <input
+          type="time"
+          name="droptime"
+          id="droptime"
+          class="busnumber shadow-lg appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        <p class="text-red-600/90">Example : 11:69 pm</p>
+      </div>
+    </div>
+    <!-- Empty form for Departure Ends -->
+
+    <!-- JavaScript here -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+      //let boarding_point_time = document.getElementById('add_boarding_point')
+
+      let selectedDays = [];
+
+      const onClickHandler = (event) => {
+        if (event.name !== "all" && event.checked === true) {
+          selectedDays.push(event.name);
+          console.log(selectedDays);
+        } else if (event.name !== "all" && event.checked === false) {
+          const filtered = selectedDays.filter((word) => word !== event.name);
+          selectedDays = [...filtered];
+          console.log(selectedDays);
+        } else if (event.name === "all" && event.checked === true) {
+          const inputs = document.getElementsByClassName("boarding_day_input");
+          for (let i = 0; i < inputs.length; i++) {
+            inputs[i].setAttribute("disabled", "true");
+          }
+          selectedDays.splice(0, selectedDays.length);
+          selectedDays.push(
+            "sunday",
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday",
+            "saturday"
+          );
+          console.log(selectedDays);
+        } else if (event.name === "all" && event.checked === false) {
+          selectedDays.splice(0, selectedDays.length);
+          const inputs = document.getElementsByClassName("boarding_day_input");
+          for (let i = 0; i < inputs.length; i++) {
+            inputs[i].removeAttribute("disabled", "true");
+          }
+          console.log(selectedDays);
+        }
+      };
+
+      // Boarding Location adding logic using Node copy
+      const addMorebtnforBoarding =
+        document.getElementById("add_boarding_point");
+      //const totalnewforms = document.querySelectorAll("#id_form-TOTAL_FORMS")
+      //Destructure - unnecessary
+      //const totalnewformsForBoarding = totalnewforms[0]
+
+      const currentBoardingForm =
+        document.getElementsByClassName("boardingForm");
+
+      addMorebtnforBoarding.addEventListener("click", add_new_Boarding_form);
+
+      function add_new_Boarding_form(event) {
+        if (event) {
+          event.preventDefault();
+        }
+        let currentFormCount = currentBoardingForm.length;
+        //console.log(currentFormCount)
+        const formcopyTarget = document.getElementById("boarding_point_time");
+        const emptyForm = document
+          .getElementById("empty-form-boarding")
+          .cloneNode(true);
+
+        emptyForm.setAttribute(
+          "class",
+          "boardingForm border-2 border-blue-500 rounded-md px-3 py-2"
+        );
+        emptyForm.setAttribute("id", `form-${currentFormCount}`);
+        //const regex = new RegExp('__prefix__', 'g')
+        //emptyForm.innerHTML = emptyForm.innerHTML.replace(regex, currentFormCount)
+        //totalnewformsForBoarding.setAttribute('value', currentFormCount + 1);
+        formcopyTarget.append(emptyForm);
+      }
+
+      //Deperture Location adding logic using Node copy
+      const addMorebtnForDeparture =
+        document.getElementById("add_dropping_point");
+      const currentDepartureForm =
+        document.getElementsByClassName("departureForm");
+      addMorebtnForDeparture.addEventListener("click", add_new_Departure_form);
+
+      function add_new_Departure_form(event) {
+        if (event) {
+          event.preventDefault();
+        }
+        let currentFormCount = currentDepartureForm.length;
+        console.log(currentFormCount);
+        const formcopyTarget = document.getElementById("dropping_point_time");
+        const emptyForm = document
+          .getElementById("empty-form-departure")
+          .cloneNode(true);
+
+        emptyForm.setAttribute(
+          "class",
+          "departureForm border-2 border-blue-500 rounded-md px-3 py-2"
+        );
+        emptyForm.setAttribute("id", `form-${currentFormCount}`);
+        formcopyTarget.append(emptyForm);
+      }
+
+      //Form submit logic
+      const submitButton = document.getElementById("submit-button");
+      submitButton.addEventListener("click", submit_form);
+
+      function submit_form(event) {
+        let BoardinglocationArray = [];
+        let BoardingtimeArray = [];
+
+        let DeparturelocationArray = [];
+        let DeparturetimeArray = [];
+
+        const allInputForBoardingLocation = document.querySelectorAll("#deloc");
+        const allInputforBoardingTime = document.querySelectorAll("#dtime");
+        const allInputForDepartureLocation =
+          document.querySelectorAll("#dropLocation");
+        const allInputForDepartureTime = document.querySelectorAll("#droptime");
+
+        const schedule_name = document.getElementById("schedule_name").value;
+        const starting_city = document.getElementById("starting_city").value;
+        const ending_city = document.getElementById("ending_city").value;
+
+        allInputForBoardingLocation.forEach((element) => {
+          if (element.value) {
+            BoardinglocationArray.push(element.value);
+          }
+        });
+        allInputforBoardingTime.forEach((element) => {
+          if (element.value) {
+            BoardingtimeArray.push(element.value);
+          }
+        });
+        allInputForDepartureLocation.forEach((element) => {
+          if (element.value) {
+            DeparturelocationArray.push(element.value);
+          }
+        });
+        allInputForDepartureTime.forEach((element) => {
+          if (element.value) [DeparturetimeArray.push(element.value)];
+        });
+
+        //console.log(timeArray)
+
+        //Send Axios request - create formData
+        let data = new FormData();
+        data.append("csrfmiddlewaretoken", "{{csrf_token}}");
+        data.append("Boardinglocation", BoardinglocationArray);
+        data.append("BoardingTime", BoardingtimeArray);
+        data.append("Departurelocation", DeparturelocationArray);
+        data.append("DepartureTime", DeparturetimeArray);
+        data.append("selectedDays", selectedDays);
+
+        data.append("scheduleName", schedule_name);
+        data.append("startingCity", starting_city);
+        data.append("endingCity", ending_city);
+
+        /*axios.post('', data)
+				.then(res => console.log("submitted"))
+				.catch(err => console.lod(err))*/
+
+        axios({
+          method: "post",
+          url: "",
+          data: data,
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+          .then(function (response) {
+            //handle success
+            window.location.replace("{% url 'BusSchedule:redirect-view' %}");
+          })
+          .catch(function (response) {
+            //handle error
+            console.log(response);
+          });
+      }
+    </script>
+  </body>
+</html>
