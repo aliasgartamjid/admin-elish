@@ -8,99 +8,350 @@
     <title>Elish Admin Panel | Add Bus</title>
   </head>
   <body>
-    <nav class="bg-blue-700 flex justify-start px-3 py-4 sticky top-0">
+    <nav class="bg-blue-700 z-50 flex justify-start px-3 py-4 sticky top-0">
       <h1 class="text-white text-2xl font-bold cursor-pointer">
         Elish Admin Panel
       </h1>
     </nav>
-    <div class="mt-10">
-      <div class="py-3">
-        <h1 class="px-5 text-gray-700 text-2xl">Add Bus</h1>
-      </div>
-      <div
-        class="px-5 shadow-xl mx-2 my-2 bg-white border border-gray-200 rounded-md"
+    <div class="mt-5 flex px-4 gap-x-5 items-center">
+      <h1 class="font-bold text-3xl font-serif text-red-500">ADD BUS</h1>
+      <button
+        onclick="reload()"
+        type="button"
+        class="text-white shadow-lg bg-blue-600 shadow-blue-500/50 font-medium rounded-md px-3 py-2 text-center"
       >
-        <form action="" id="form">
-          <div class="flex flex-col">
-            <div
-              class="flex items-center gap-x-3 border-b border-gray-300 pt-3 pb-5"
-            >
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+          <path
+            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+          ></path>
+        </svg>
+      </button>
+      <p class="text-red-500">Refreshes the page</p>
+    </div>
+    <div class="flex flex-col gap-y-5">
+      <div
+        class="flex flex-col lg:flex-row gap-y-2 lg:gap-y-0 px-5 py-5 justify-between border-b border-b-red-300"
+      >
+        <!-- Bus Details  -->
+        <div class="flex flex-col gap-y-2">
+          <div>
+            <h1 class="text-xl font-bold text-red-600 underline">
+              Bus details
+            </h1>
+          </div>
+          <div class="flex flex-col gap-y-2">
+            <div>
               <label class="font-bold text-lg" for="">Bus Number :</label>
               <input
-                type="text"
-                name="busnumber"
-                onchange="getBusNumber()"
+                autocomplete="off"
+                placeholder="Enter bus number"
+                onchange=""
+                type="number"
+                name=""
                 maxlength="50"
-                id=""
-                class="busnumber shadow-lg appearance-none border rounded w-3/5 lg:w-4/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow-lg appearance-none border rounded w-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
-            <div
-              class="flex items-center gap-x-3 border-b border-gray-300 pt-3 pb-5"
-            >
+            <div>
               <label class="font-bold text-lg" for="">Coach No :</label>
               <input
+                autocomplete="off"
+                placeholder="Enter coach no"
+                onchange=""
                 type="text"
-                onchange="getCoachNo()"
-                name="busnumber"
-                maxlength="50"
-                id=""
-                class="coachno shadow-lg appearance-none border rounded w-3/5 lg:w-4/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
-            </div>
-            <div
-              class="flex items-center gap-x-3 border-b border-gray-300 pt-3 pb-5"
-            >
-              <input
-                type="checkbox"
-                id=""
                 name=""
-                class="activeStatus h-4 w-4"
-                onchange="getActiveStatus()"
+                maxlength="50"
+                class="shadow-lg appearance-none border rounded w-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
-              <label class="text-lg font-bold" for="">Active</label>
             </div>
-            <div
-              class="flex items-center gap-x-3 border-b border-gray-300 pt-3 pb-5"
-            >
+            <div class="flex items-center gap-x-2">
+              <label class="font-bold text-lg" for="">Active :</label>
+              <input type="checkbox" class="w-5 h-5" />
+            </div>
+            <div>
               <label class="font-bold text-lg" for="">Bus Structure :</label>
-              <div>
-                <select
-                  onchange="getDropdownValue()"
-                  name=""
-                  id="dropdownValue"
-                  class="text-md shadow-lg px-2 py-1.5 border border-blue-500 focus:outline-none rounded-md"
-                >
-                  <option selected="">Please Select</option>
-                  <option value="Structure 01">Structure 01</option>
-                  <option value="Structure 02">Structure 02</option>
-                  <option value="Structure 03">Structure 03</option>
-                </select>
+              <select
+                name=""
+                id=""
+                class="text-md shadow-lg px-2 py-1.5 border border-gray-500 focus:outline-none rounded-md"
+              >
+                <option selected="">Please Select</option>
+                <option value="x">x</option>
+                <option value="y">y</option>
+                <option value="z">z</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- Bus Schedule  -->
+        <div class="flex flex-col gap-y-2">
+          <div>
+            <h1 class="text-xl font-bold text-red-600 underline">Schedule</h1>
+          </div>
+          <div class="flex flex-col gap-y-2">
+            <div class="flex gap-x-2">
+              <label class="font-bold text-lg" for="">Days :</label>
+              <div
+                id="daysCheckbox"
+                class="flex flex-col lg:flex-row items-center translate-y-[2px] gap-x-2"
+              ></div>
+            </div>
+            <div>
+              <label class="font-bold text-lg" for="">Start City :</label>
+              <input
+                autocomplete="off"
+                placeholder="Dhaka"
+                onchange=""
+                type="text"
+                name=""
+                maxlength="50"
+                class="shadow-lg appearance-none border rounded w-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div>
+              <label class="font-bold text-lg" for="">End City :</label>
+              <input
+                autocomplete="off"
+                placeholder="Bandarban"
+                onchange=""
+                type="text"
+                name=""
+                maxlength="50"
+                class="shadow-lg appearance-none border rounded w-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div>
+              <label class="font-bold text-lg" for="">Price :</label>
+              <input
+                autocomplete="off"
+                placeholder="Enter Price"
+                onchange=""
+                type="number"
+                name=""
+                maxlength="50"
+                class="shadow-lg appearance-none border rounded w-fit py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div>
+              <label class="font-bold text-lg" for="">Seat Class :</label>
+              <select
+                name=""
+                id=""
+                class="text-md shadow-lg px-2 py-1.5 border border-gray-500 focus:outline-none rounded-md"
+              >
+                <option selected="">Please Select</option>
+                <option value="x">Economy</option>
+                <option value="y">y</option>
+                <option value="z">z</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 px-5 py-3 justify-between border-b border-b-red-300"
+      >
+        <!-- Departure Boarding Points  -->
+        <div class="flex w-5/5 lg:w-2/5 flex-col gap-y-2">
+          <div>
+            <h1 class="text-xl font-bold text-red-600 underline">
+              Departure Boarding Points
+            </h1>
+          </div>
+          <div
+            id="boarding_point_time"
+            class="flex flex-col gap-y-3 border-2 border-blue-500 bg-blue-400/10 px-2 py-2 rounded-md overflow-y-scroll max-h-[300px]"
+          >
+            <div
+              class="border-2 border-blue-500/20 shadow-lg rounded-md px-3 py-2"
+            >
+              <div class="flex justify-between py-2">
+                <h1>Boarding Location</h1>
+                <h2>Time</h2>
               </div>
-              <div>
-                <p class="selectedStructure"></p>
+              <div
+                class="flex boardingForm boardingform-1 justify-between gap-x-2"
+              >
+                <input
+                  onchange="getBoardingPoint(event)"
+                  placeholder="Example : Jatrabari"
+                  type="text"
+                  name="DeLocation"
+                  id="deloc"
+                  class="shadow-lg appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+                <input
+                  type="time"
+                  name="dtime"
+                  id="dtime"
+                  class="text-center px-2"
+                />
+              </div>
+            </div>
+            <!-- Empty hidden form to copy -->
+            <div
+              class="copyBoardingForm boardingForm hidden border-2 border-blue-500/20 shadow-lg rounded-md px-3 py-2"
+            >
+              <div class="flex justify-between gap-x-2">
+                <input
+                  placeholder="Example : Jatrabari"
+                  type="text"
+                  name="DeLocation"
+                  id="deloc"
+                  class="shadow-lg appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+                <input
+                  type="time"
+                  name="dtime"
+                  id="dtime"
+                  class="text-center px-2"
+                />
               </div>
             </div>
           </div>
-          <div class="flex justify-end gap-x-3 pt-3 pb-5">
+          <div>
             <button
+              onclick="addMoreBoarindPoint()"
               type="button"
-              onclick="saveSubmit()"
-              class="px-3 py-1.5 bg-blue-500 rounded-md hover:bg-blue-700 text-white"
+              id="add_boarding_point"
+              class="inline-flex items-center justify-center w-10 h-10 mr-2 text-blue-100 transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800"
             >
-              Save
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                ></path>
+              </svg>
             </button>
-            <button
-              type="button"
-              onclick="saveAndSubmit()"
-              class="px-3 py-1.5 bg-blue-500 hover:bg-blue-700 rounded-md text-white"
-            >
-              Save & Submit
-            </button>
+            <label>Add More</label>
           </div>
-        </form>
+        </div>
+        <!-- Dropping Points  -->
+        <div class="flex flex-col gap-y-2 w-5/5 lg:w-2/5">
+          <div>
+            <h1 class="text-xl font-bold text-red-600 underline">
+              Dropping Points
+            </h1>
+          </div>
+          <div
+            id="dropping_point_time"
+            class="flex flex-col gap-y-3 border-2 border-blue-500 bg-blue-400/10 px-2 py-2 rounded-md overflow-y-scroll max-h-[300px]"
+          >
+            <div
+              class="border-2 border-blue-500/20 shadow-lg rounded-md px-3 py-2"
+            >
+              <div class="flex justify-between py-2">
+                <h1>Dropping Location</h1>
+                <h2>Time</h2>
+              </div>
+              <div
+                class="flex droppingForm droppingform-1 justify-between gap-x-2"
+              >
+                <input
+                  placeholder="Example : Bandarban Bus Terminal"
+                  type="text"
+                  name="DeLocation"
+                  id="deloc"
+                  class="shadow-lg appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+                <input
+                  type="time"
+                  name="dtime"
+                  id="dtime"
+                  class="text-center px-2"
+                />
+              </div>
+            </div>
+            <!-- Empty Dropping to copy -->
+            <div
+              class="copyDroppingForm droppingForm hidden border-2 border-blue-500/20 shadow-lg rounded-md px-3 py-2"
+            >
+              <div class="flex justify-between gap-x-2">
+                <input
+                  placeholder="Example : Bandarban Bus Terminal"
+                  type="text"
+                  name="DeLocation"
+                  id="deloc"
+                  class="shadow-lg appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+                <input
+                  type="time"
+                  name="dtime"
+                  id="dtime"
+                  class="text-center px-2"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <button
+              onclick="addMoreDroppingPoints()"
+              type="button"
+              id="add_boarding_point"
+              class="inline-flex items-center justify-center w-10 h-10 mr-2 text-blue-100 transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800"
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+            <label>Add More</label>
+          </div>
+        </div>
+      </div>
+      <div class="px-5">
+        <button
+          onclick="submitData()"
+          type="button"
+          type="button"
+          class="hover:bg-blue-500 bg-blue-700 px-2.5 py-1.5 text-white rounded-md text-lg"
+        >
+          Submit
+        </button>
+      </div>
+      <!-- Modal -->
+      <div
+        id="submitModal"
+        class="absolute hidden h-screen w-screen bg-black/40 z-20 top-0 bottom-0 left-0 right-0"
+      >
+        <div class="h-40 bg-white max-w-md mx-auto mt-32 rounded-md shadow-lg">
+          <div
+            class="flex flex-col w-full h-full gap-y-2 justify-center items-center"
+          >
+            <div>
+              <h1 class="text-xl font-medium">
+                Are you sure you want to submit?
+              </h1>
+            </div>
+            <div>
+              <button
+                onclick="submit_form()"
+                data-modal-toggle="popup-modal"
+                type="button"
+                class="text-white bg-red-600 hover:bg-red-800 focus:outline-none font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+              >
+                Yes, I'm sure
+              </button>
+              <button
+                onclick="removeModal()"
+                data-modal-toggle="popup-modal"
+                type="button"
+                class="text-gray-500 bg-white hover:bg-gray-100 focus:outline-none rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+              >
+                No, cancel
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
     <script src="../js/addBus.js"></script>
   </body>
 </html>
