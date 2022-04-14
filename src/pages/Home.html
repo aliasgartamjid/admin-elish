@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../dist/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <title>Elish Paribahan</title>
+  </head>
+  <body>
+    <div class="">
+      <!-- Call Now -->
+      <nav class="py-3 px-5">
+        <div>
+          <h1
+            class="text-[16px] md:text-lg font-bold bg-clip-text border-b border-blue-500 text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+          >
+            Call Now : 0000
+          </h1>
+        </div>
+      </nav>
+      <!-- Actual Nav -->
+      <nav
+        class="flex justify-between px-5 md:px-0 md:justify-around items-center py-5 shadow-lg"
+      >
+        <div>
+          <h1
+            class="font-bold text-2xl md:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+          >
+            Elish Paribahan
+          </h1>
+        </div>
+        <div
+          class="hidden md:flex items-center space-x-8 md:text-lg text-gray-600"
+        >
+          <a href="" class="border-b-2 border-blue-400">Home</a>
+          <a href="" class="hover:underline">Our Service</a>
+          <a href="" class="hover:underline">Contact Us</a>
+          <a href="" class="hover:underline">Print E-Ticket</a>
+        </div>
+        <div class="flex md:hidden cursor-pointer" onclick="hamburgerMenu()">
+          <img src="../../images/hamburger-menu-svgrepo-com.svg" alt="" />
+        </div>
+      </nav>
+      <!-- HamburgerMenu Options -->
+      <div class="bg-white hidden shadow-lg hamburger">
+        <div
+          class="flex flex-col justify-center items-center space-y-5 text-lg py-10 text-gray-600"
+        >
+          <a href="" class="border-b-2 border-blue-400">Home</a>
+          <a href="" class="hover:underline">Our Service</a>
+          <a href="" class="hover:underline">Contact Us</a>
+          <a href="" class="hover:underline">Print E-Ticket</a>
+        </div>
+      </div>
+      <!-- Ticket Form -->
+      <div
+        class="shadow-2xl w-11/12 md:max-w-4xl p-4 mx-auto mt-8 rounded-lg border-2 border-blue-400"
+      >
+        <form method="post" action="">
+          <div class="flex flex-col space-y-3 px-4 py-4">
+            <!-- AC CHECK -->
+            <div>
+              <div class="flex space-x-5 py-2">
+                <label class="inline-flex items-center">
+                  <input
+                    class="text-indigo-500 w-5 h-5 mr-2 focus:ring-indigo-400 focus:ring-opacity-25 border border-gray-300 rounded"
+                    type="checkbox"
+                    checked="true"
+                  />
+                  All
+                </label>
+                <label class="inline-flex items-center">
+                  <input
+                    class="text-indigo-500 w-5 h-5 mr-2 focus:ring-indigo-400 focus:ring-opacity-25 border border-gray-300 rounded"
+                    type="checkbox"
+                  />
+                  AC
+                </label>
+                <label class="inline-flex items-center">
+                  <input
+                    class="text-indigo-500 w-5 h-5 mr-2 focus:ring-indigo-400 focus:ring-opacity-25 border border-gray-300 rounded"
+                    type="checkbox"
+                  />
+                  Non AC
+                </label>
+              </div>
+            </div>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-y-5 md:gap-y-8 py-4"
+            >
+              <div class="flex items-center space-x-3">
+                <label class="text-gray-600 text-lg">Leaving From</label>
+                <select
+                  name=""
+                  id=""
+                  class="md:w-1/2 w-3/5 appearance-none focus:outline-none text-gray-600 border-b-2 p-2 text-sm border-blue-400 bg-transparent"
+                >
+                  <option selected="">Select City</option>
+                  <option value="volvo">DHAKA</option>
+                  <option value="saab">BANDARBAN</option>
+                  <option value="opel">RAJSHAHI</option>
+                </select>
+              </div>
+              <div class="flex items-center space-x-3">
+                <label class="text-gray-600 text-lg">Going To</label>
+                <select
+                  name=""
+                  id=""
+                  class="md:w-1/2 w-3/5 appearance-none focus:outline-none text-gray-600 border-b-2 p-2 text-sm border-blue-400 bg-transparent"
+                >
+                  <option selected="">Select City</option>
+                  <option value="volvo">BANDARBAN</option>
+                  <option value="saab">RANGPUR</option>
+                  <option value="opel">DHAKA</option>
+                </select>
+              </div>
+              <div class="flex items-center space-x-3">
+                <label class="text-gray-600 text-lg">Depurture Date</label>
+                <input
+                  type="date"
+                  name=""
+                  id=""
+                  class="md:w-1/2 w-3/5 appearance-none focus:outline-none text-gray-600 border-b-2 p-2 text-sm border-blue-400"
+                />
+              </div>
+            </div>
+            <div class="flex justify-center">
+              <button
+                onclick="getData()"
+                type="button"
+                class="inline-block w-2/5 px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-blue-600 hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Image Slider -->
+      <div class="my-10">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide flex flex-wrap justify-center">
+              <img
+                class="w-11/12 md:w-4/5 h-auto md:h-[650px] shadow-lg rounded-lg"
+                src="../../images/ezgif-2-bdd9dccac5.jpg"
+                alt=""
+              />
+            </div>
+            <div class="swiper-slide flex flex-wrap justify-center">
+              <img
+                class="w-11/12 md:w-4/5 h-auto md:h-[650px] shadow-lg rounded-lg"
+                src="../../images/received-508080877487128.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+      <!-- Services -->
+      <div class="flex space-y-10 flex-col items-center py-4 mx-3">
+        <div>
+          <h1
+            class="font-bold text-5xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+          >
+            Our Services
+          </h1>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6"
+        >
+          <div
+            class="flex flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
+          >
+            <h1
+              class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+            >
+              Renting
+            </h1>
+            <p class="text-lg text-gray-600">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque
+              nobis pariatur recusandae labore. Sint architecto magnam delectus
+              quae, iste in?
+            </p>
+          </div>
+          <div
+            class="flex flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
+          >
+            <h1
+              class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+            >
+              IDK
+            </h1>
+            <p class="text-lg text-gray-600">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque
+              nobis pariatur recusandae labore. Sint architecto magnam delectus
+              quae, iste in?
+            </p>
+          </div>
+          <div
+            class="flex flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
+          >
+            <h1
+              class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+            >
+              IDk
+            </h1>
+            <p class="text-lg text-gray-600">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque
+              nobis pariatur recusandae labore. Sint architecto magnam delectus
+              quae, iste in?
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- footer -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5 px-20 py-4 mt-10 shadow-lg border-t-2 border-blue-300"
+      >
+        <div class="max-w-md h-40 p-2">
+          <h1
+            class="font-bold text-2xl text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500 mb-4"
+          >
+            * ABOUT US
+          </h1>
+          <p class="text-gray-600">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+            excepturi maiores quae perferendis praesentium commodi, mollitia
+            debitis non at ad.
+          </p>
+        </div>
+        <div class="max-w-md h-40 p-2">
+          <h1
+            class="font-bold text-center text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500 mb-4"
+          >
+            * QUICK LINKS
+          </h1>
+          <div class="flex flex-col items-center gap-x-4 text-gray-600">
+            <a href="" class="hover:underline">Home</a>
+            <a href="" class="hover:underline">Our Service</a>
+            <a href="" class="hover:underline">Contact Us</a>
+            <a href="" class="hover:underline">Print E-Ticket</a>
+          </div>
+        </div>
+        <div class="max-w-md h-40 p-2">
+          <h1
+            class="font-bold text-center text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500 mb-4"
+          >
+            * ADDRESS
+          </h1>
+          <p class="text-gray-600">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+            excepturi maiores quae perferendis praesentium commodi, mollitia
+            debitis non at ad.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="../js/Home.js"></script>
+</html>
