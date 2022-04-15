@@ -49,7 +49,19 @@
         <img src="../../images/hamburger-menu-svgrepo-com.svg" alt="" />
       </div>
     </nav>
-
+    <!-- Hamburger -->
+    <div class="bg-white hidden shadow-lg hamburger">
+      <div
+        class="flex flex-col justify-center items-center space-y-5 text-lg py-10 text-gray-600"
+      >
+        <a href="../pages/Home.html" class="hover:underline">Home</a>
+        <a href="../pages/OurService.html" class="hover:underline"
+          >Our Service</a
+        >
+        <a href="" class="hover:underline">Contact Us</a>
+        <a href="" class="hover:underline">Print E-Ticket</a>
+      </div>
+    </div>
     <!-- footer -->
     <footer
       class="py-4 mt-5 max-w-6xl mx-auto flex flex-col space-y-8 items-center justify-center"
@@ -125,4 +137,14 @@
       </div>
     </footer>
   </body>
+  <script>
+    const hamburgerMenu = () => {
+      const hamburger = document.querySelector(".hamburger");
+      if (hamburger.classList.contains("hidden")) {
+        hamburger.classList.remove("hidden");
+      } else {
+        hamburger.classList.add("hidden");
+      }
+    };
+  </script>
 </html>
