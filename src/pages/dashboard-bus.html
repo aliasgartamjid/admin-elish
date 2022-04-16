@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../dist/output.css" rel="stylesheet" />
+    <title>Elish Admin Panel | Dashboard Bus</title>
+  </head>
+  <body>
+    <!-- nav -->
+    <nav class="bg-blue-700 z-50 flex justify-start px-3 py-4 sticky top-0">
+      <a
+        href="../pages/Dashboard.html"
+        class="text-white text-2xl font-bold cursor-pointer"
+      >
+        Elish Admin Panel
+      </a>
+    </nav>
+    <!-- Heading -->
+    <div
+      class="mt-5 flex px-4 gap-x-5 items-center border-b border-gray-300 py-2"
+    >
+      <h1
+        class="font-bold text-xl md:text-2xl lg:text-3xl text-red-500 cursor-pointer"
+      >
+        Dashboard for Bus
+      </h1>
+    </div>
+    <div class="grid grid-cols-2 gap-x-4 gap-y-4 mt-4 mx-4">
+      <!-- bus -->
+      <div
+        class="hover:bg-slate-300 bg-slate-100 p-4 rounded-md transition ease-in-out"
+      >
+        <a href="">
+          <h1
+            class="font-bold text-xl md:text-2xl hover:underline text-center lg:text-3xl"
+          >
+            My Buses
+          </h1>
+          <p class="text-center py-1">
+            You can view, <span class="text-blue-500">edit</span>, and
+            <span class="text-red-500">delete</span> buses
+          </p>
+        </a>
+      </div>
+      <!-- Add Bus -->
+      <div
+        class="hover:bg-slate-300 bg-slate-100 p-4 rounded-md transition ease-in-out"
+      >
+        <a href="../pages/addBus.html">
+          <h1
+            class="font-bold text-xl md:text-2xl hover:underline text-center lg:text-3xl"
+          >
+            Add Bus
+          </h1>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
