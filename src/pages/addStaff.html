@@ -37,203 +37,144 @@
       </button>
       <p class="text-red-500">Refreshes the page</p>
     </div>
-    <form class="flex flex-col space-y-4 mt-10 mx-5">
-      <!-- Username -->
-      <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
-        <label for="username" class="font-bold text-xl">Username:</label>
-        <input
-          class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          name="username"
-          id=""
-          required
-        />
-      </div>
-      <!-- First Name -->
-      <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
-        <label for="firstname" class="font-bold text-xl">First Name:</label>
-        <input
-          class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          name="firstname"
-          id=""
-          required
-        />
-      </div>
-      <!-- Last Name -->
-      <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
-        <label for="lastname" class="font-bold text-xl">Last Name:</label>
-        <input
-          class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          name="lastname"
-          id=""
-          required
-        />
-      </div>
-      <!-- Email Address -->
-      <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
-        <label for="email" class="font-bold text-xl">Email Address:</label>
-        <input
-          class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="email"
-          name="email"
-          id=""
-          required
-        />
-      </div>
-      <!-- Staff Status -->
-      <div
-        class="flex flex-col justify-center space-y-3 py-8 border-b border-gray-300"
-      >
-        <div class="flex space-x-3 items-center">
-          <input type="checkbox" name="staffstatus" class="w-6 h-6" id="" />
-          <label for="staffstatus" class="font-bold text-xl"
-            >Staff Status</label
+    <!-- Form -->
+    <form class="w-fit mx-5 md:mx-auto">
+      <div class="grid md:grid-cols-2">
+        <!-- Username -->
+        <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
+          <label for="username" class="font-bold text-xl">Username:</label>
+          <input
+            class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="username"
+            id=""
+            required
+          />
+        </div>
+        <!-- First Name -->
+        <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
+          <label for="firstname" class="font-bold text-xl">First Name:</label>
+          <input
+            class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="firstname"
+            id=""
+            required
+          />
+        </div>
+        <!-- Last Name -->
+        <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
+          <label for="lastname" class="font-bold text-xl">Last Name:</label>
+          <input
+            class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="lastname"
+            id=""
+            required
+          />
+        </div>
+        <!-- Email Address -->
+        <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
+          <label for="email" class="font-bold text-xl">Email Address:</label>
+          <input
+            class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="email"
+            name="email"
+            id=""
+            required
+          />
+        </div>
+        <!-- Staff Status -->
+        <div
+          class="flex flex-col justify-center space-y-3 py-8 border-b border-gray-300"
+        >
+          <div class="flex space-x-3 items-center">
+            <input type="checkbox" name="staffstatus" class="w-6 h-6" id="" />
+            <label for="staffstatus" class="font-bold text-xl"
+              >Staff Status</label
+            >
+          </div>
+          <p class="text-gray-500">
+            Designates whether the user can log into this admin site
+          </p>
+        </div>
+        <!-- Phone -->
+        <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
+          <label for="phone" class="font-bold text-xl">Phone no:</label>
+          <input
+            class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="number"
+            name="phone"
+            id=""
+            required
+          />
+        </div>
+        <!-- Assigned Counter -->
+        <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
+          <label for="counter" class="font-bold text-xl"
+            >Assigned Counter:</label
           >
+          <input
+            class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="counter"
+            id=""
+            required
+          />
         </div>
-        <p class="text-gray-500">
-          Designates whether the user can log into this admin site
-        </p>
-      </div>
-      <!-- Active Status -->
-      <div
-        class="flex flex-col justify-center space-y-3 py-8 border-b border-gray-300"
-      >
-        <div class="flex space-x-3 items-center">
-          <input type="checkbox" name="active" class="w-6 h-6" id="" />
-          <label for="active" class="font-bold text-xl">Active</label>
+        <!-- Address -->
+        <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
+          <label for="address" class="font-bold text-xl">Address:</label>
+          <input
+            class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="address"
+            id=""
+            required
+          />
         </div>
-        <p class="text-gray-500">
-          Designates whether this user should be treated as active. Unselect
-          this instead of deleting accounts
-        </p>
-      </div>
-      <!-- Date Joined -->
-      <div
-        class="flex space-x-6 md:space-x-16 items-start py-8 border-b border-gray-300"
-      >
-        <div>
-          <label for="datejoined" class="font-bold text-xl">Date Joined:</label>
+        <!-- Role -->
+        <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
+          <label for="role" class="font-bold text-xl">Role:</label>
+          <input
+            class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="role"
+            id=""
+            required
+          />
         </div>
-        <div class="flex flex-col space-y-4">
+        <!-- Password -->
+        <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
+          <label for="password" class="font-bold text-xl">Password:</label>
+          <input
+            class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="password"
+            id="password"
+            required
+          />
+        </div>
+        <!-- Superuser Status -->
+        <div
+          class="flex flex-col justify-center space-y-3 py-8 border-b border-gray-300"
+        >
           <div class="flex space-x-3 items-center">
-            <label for="joineddate" class="font-bold text-xl">Date:</label>
             <input
-              type="date"
-              name="joineddate"
+              type="checkbox"
+              name="superuserstatus"
+              class="w-6 h-6"
               id=""
-              class="shadow-lg appearance-none border rounded w-full md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
+            <label for="superuserstatus" class="font-bold text-xl"
+              >Superuser Status</label
+            >
           </div>
-          <div class="flex space-x-3 items-center">
-            <label for="joinedtime" class="font-bold text-xl">Time:</label>
-            <input
-              type="date"
-              name="joinedtime"
-              id=""
-              class="shadow-lg appearance-none border rounded w-full md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div>
+          <p class="text-gray-500">
+            Designates that this user has all permissions without explicitly
+            assigning them.
+          </p>
         </div>
-      </div>
-      <!-- Phone -->
-      <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
-        <label for="phone" class="font-bold text-xl">Phone no:</label>
-        <input
-          class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="number"
-          name="phone"
-          id=""
-          required
-        />
-      </div>
-      <!-- Assigned Counter -->
-      <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
-        <label for="counter" class="font-bold text-xl">Assigned Counter:</label>
-        <input
-          class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          name="counter"
-          id=""
-          required
-        />
-      </div>
-      <!-- Address -->
-      <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
-        <label for="address" class="font-bold text-xl">Address:</label>
-        <input
-          class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          name="address"
-          id=""
-          required
-        />
-      </div>
-      <!-- Role -->
-      <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
-        <label for="role" class="font-bold text-xl">Role:</label>
-        <input
-          class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          name="role"
-          id=""
-          required
-        />
-      </div>
-      <!-- Password -->
-      <div class="flex space-x-3 items-center py-8 border-b border-gray-300">
-        <label for="password" class="font-bold text-xl">Password:</label>
-        <input
-          class="shadow-lg appearance-none border rounded w-2/4 md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          name="password"
-          id="password"
-          required
-        />
-      </div>
-      <!-- Last Login -->
-      <div
-        class="flex space-x-6 md:space-x-16 items-start py-8 border-b border-gray-300"
-      >
-        <div>
-          <label for="lastlogin" class="font-bold text-xl">Last Login:</label>
-        </div>
-        <div class="flex flex-col space-y-4">
-          <div class="flex space-x-3 items-center">
-            <label for="lastloginDate" class="font-bold text-xl">Date:</label>
-            <input
-              type="date"
-              name="lastloginDate"
-              id=""
-              class="shadow-lg appearance-none border rounded w-full md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div>
-          <div class="flex space-x-3 items-center">
-            <label for="lastloginTime" class="font-bold text-xl">Time:</label>
-            <input
-              type="date"
-              name="lastloginTime"
-              id=""
-              class="shadow-lg appearance-none border rounded w-full md:w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div>
-        </div>
-      </div>
-      <!-- Superuser Status -->
-      <div
-        class="flex flex-col justify-center space-y-3 py-8 border-b border-gray-300"
-      >
-        <div class="flex space-x-3 items-center">
-          <input type="checkbox" name="superuserstatus" class="w-6 h-6" id="" />
-          <label for="superuserstatus" class="font-bold text-xl"
-            >Superuser Status</label
-          >
-        </div>
-        <p class="text-gray-500">
-          Designates that this user has all permissions without explicitly
-          assigning them.
-        </p>
       </div>
       <!-- Submit Button -->
       <div class="py-8 border-b border-gray-300">
