@@ -7,7 +7,11 @@ const buses = [
     departureTime: "4:20",
     seatAvailable: "69",
     fare: "800",
-    bookedSeats: ["A1", "C2", "D3"],
+    bookedSeats: ["A1"],
+    seatStructure: [
+      ["A1", "A2", "X", "A3", "A4"],
+      ["B1", "B2", "X", "B3", "B4"],
+    ],
   },
   {
     name: "Elish Paribahan",
@@ -17,6 +21,10 @@ const buses = [
     seatAvailable: "25",
     fare: "692",
     bookedSeats: [],
+    seatStructure: [
+      ["A1", "A2", "X", "A3", "A4"],
+      ["B1", "B2", "X", "B3", "B4"],
+    ],
   },
   {
     name: "Elish Paribahan",
@@ -26,6 +34,10 @@ const buses = [
     seatAvailable: "25",
     fare: "692",
     bookedSeats: [],
+    seatStructure: [
+      ["A1", "A2", "X", "A3", "A4"],
+      ["B1", "B2", "X", "B3", "B4"],
+    ],
   },
   {
     name: "Elish Paribahan",
@@ -35,13 +47,23 @@ const buses = [
     seatAvailable: "25",
     fare: "692",
     bookedSeats: [],
+    seatStructure: [
+      ["A1", "A2", "X", "A3", "A4"],
+      ["B1", "B2", "X", "B3", "B4"],
+    ],
   },
 ];
 
 let selectedSeats = [];
+let totalSeats = "";
+let totalAmount = "";
 
 const deleteShowSelectedSeats = (e) => {
-  const busNo = e.path[0].classList[1].slice(4, 5);
+  const busNo =
+    e.composedPath()[0].classList[1].length < 5
+      ? e.composedPath()[0].classList[1].slice(4, 5)
+      : e.composedPath()[0].classList[1].slice(4, 6);
+
   selectedSeats.splice(selectedSeats.indexOf(e.target.value), 1);
   const showSelectedSeats = document.querySelector(`#selectedSeats-${busNo}`);
   showSelectedSeats.innerHTML = selectedSeats
@@ -73,18 +95,28 @@ const deleteShowSelectedSeats = (e) => {
   if (selectedSeats.length === 0) {
     showSelectedSeats.classList.add("hidden");
   }
+
+  //total seats and total amount
+  const totalSeats = document.querySelector(`.totalSeats-${busNo}`);
+  totalSeats.innerText = selectedSeats.length;
+  const totalAmount = document.querySelector(`.totalAmount-${busNo}`);
+  totalAmount.innerText = selectedSeats.length * buses[busNo].fare;
 };
 
 const getSelectedSeats = (e) => {
-  const busNo = e.path[0].classList[1].slice(4, 5);
+  const busNo =
+    e.composedPath()[0].classList[1].length < 9
+      ? e.composedPath()[0].classList[1].slice(4, 5)
+      : e.composedPath()[0].classList[1].slice(4, 6);
+
   if (!selectedSeats.includes(e.target.value)) {
     selectedSeats.push(e.target.value);
-    e.path[0].classList.remove("bg-white");
-    e.path[0].classList.add("bg-green-500");
-    e.path[0].classList.remove("text-black");
-    e.path[0].classList.add("text-white");
+    e.composedPath()[0].classList.remove("bg-white");
+    e.composedPath()[0].classList.add("bg-green-500");
+    e.composedPath()[0].classList.remove("text-black");
+    e.composedPath()[0].classList.add("text-white");
 
-    // Add Users to see the selected Seats
+    // Show Users to see the selected Seats
     const showSelectedSeats = document.querySelector(`#selectedSeats-${busNo}`);
     showSelectedSeats.classList.remove("hidden");
     showSelectedSeats.classList.add("flex");
@@ -105,6 +137,12 @@ const getSelectedSeats = (e) => {
       `;
       })
       .join("");
+
+    //total seats and total amount
+    const totalSeats = document.querySelector(`.totalSeats-${busNo}`);
+    totalSeats.innerText = selectedSeats.length;
+    const totalAmount = document.querySelector(`.totalAmount-${busNo}`);
+    totalAmount.innerText = selectedSeats.length * buses[busNo].fare;
   } else {
     for (let i = 0; i < selectedSeats.length; i++) {
       if (selectedSeats[i] === e.target.value) {
@@ -133,11 +171,16 @@ const getSelectedSeats = (e) => {
         })
         .join("");
     }
-    e.path[0].classList.remove("bg-green-500");
-    e.path[0].classList.add("bg-white");
-    e.path[0].classList.remove("text-white");
+    e.composedPath()[0].classList.remove("bg-green-500");
+    e.composedPath()[0].classList.add("bg-white");
+    e.composedPath()[0].classList.remove("text-white");
+
+    //total seats and total amount
+    const totalSeats = document.querySelector(`.totalSeats-${busNo}`);
+    totalSeats.innerText = selectedSeats.length;
+    const totalAmount = document.querySelector(`.totalAmount-${busNo}`);
+    totalAmount.innerText = selectedSeats.length * buses[busNo].fare;
   }
-  console.log(selectedSeats);
 };
 
 const busesCol = document.querySelector("#busesCol");
@@ -206,409 +249,7 @@ busesCol.innerHTML = buses
               Driver
             </h1>
           </div>
-          <div class="flex flex-col space-y-2 pb-6">
-            <!-- A -->
-            <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="A1"
-                class="border bus-${index}-A1 cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
-              >
-                A1
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="A2"
-                class="border bus-${index}-A2 cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
-              >
-                A2
-              </button>
-              <p class="w-[40px] h-auto leading-8 text-center"></p>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="A3"
-                class="border bus-${index}-A3 cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
-              >
-                A3
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="A4"
-                class="border bus-${index}-A4 cursor-pointer border-gray-300 bg-white w-[40px] h-autol leading-8 text-center"
-              >
-                A4
-              </button>
-            </div>
-            <!-- B -->
-            <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="B1"
-                class="border bus-${index}-B1 cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
-              >
-                B1
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="B2"
-                class="border bus-${index}-B2 cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
-              >
-                B2
-              </button>
-              <p class="w-[40px] h-auto leading-8 text-center"></p>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="B3"
-                class="border bus-${index}-B3 cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
-              >
-                B3
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="B4"
-                class="border bus-${index}-B4 cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
-              >
-                B4
-              </button>
-            </div>
-            <!-- C -->
-            <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="C1"
-                class="border bus-${index}-C1 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                C1
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="C2"
-                class="border bus-${index}-C2 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                C2
-              </button>
-              <p class="w-[40px] h-auto leading-8 text-center"></p>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="C3"
-                class="border bus-${index}-C3 cursor-pointer border-gray-300 bg-white w-full h-full leading-8 text-center"
-              >
-                C3
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="C4"
-                class="border bus-${index}-C4 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                C4
-              </button>
-            </div>
-            <!-- D -->
-            <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="D1"
-                class="border bus-${index}-D1 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                D1
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="D2"
-                class="border bus-${index}-D2 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                D2
-              </button>
-              <p class="w-[40px] h-auto leading-8 text-center"></p>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="D3"
-                class="border bus-${index}-D3 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                D3
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="D4"
-                class="border bus-${index}-D4 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                D4
-              </button>
-            </div>
-            <!-- E -->
-            <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="E1"
-                class="border bus-${index}-E1 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                E1
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="E2"
-                class="border bus-${index}-E2 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                E2
-              </button>
-              <p class="w-[40px] h-auto leading-8 text-center"></p>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="E3"
-                class="border bus-${index}-E3 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                E3
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="E4"
-                class="border bus-${index}-E4 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                E4
-              </button>
-            </div>
-            <!-- F -->
-            <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="F1"
-                class="border bus-${index}-F1 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                F1
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="F2"
-                class="border bus-${index}-F2 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                F2
-              </button>
-              <p class="w-[40px] h-auto leading-8 text-center"></p>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="F3"
-                class="border bus-${index}-F3 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                F3
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="F4"
-                class="border bus-${index}-F4 cursor-pointer border-gray-300 bg-white-white w-[40px] h-auto leading-8 text-center"
-              >
-                F4
-              </button>
-            </div>
-            <!-- G -->
-            <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="G1"
-                class="border bus-${index}-G1 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                G1
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="G2"
-                class="border bus-${index}-G2 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                G2
-              </button>
-              <p class="ww-[40px] h-auto leading-8 text-center"></p>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="G3"
-                class="border bus-${index}-G3 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                G3
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="G4"
-                class="border bus-${index}-G4 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                G4
-              </button>
-            </div>
-            <!-- H -->
-            <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="H1"
-                class="border bus-${index}-H1 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                H1
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="H2"
-                class="border bus-${index}-H2 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                H2
-              </button>
-              <p class="w-[40px] h-auto leading-8 text-center"></p>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="H3"
-                class="border bus-${index}-H3 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                H3
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="H4"
-                class="border bus-${index}-H4 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                H4
-              </button>
-            </div>
-            <!-- I -->
-            <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="I1"
-                class="border bus-${index}-I1 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                I1
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="I2"
-                class="border bus-${index}-I2 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                I2
-              </button>
-              <p class="w-[40px] h-auto leading-8 text-center"></p>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="I3"
-                class="border bus-${index}-I3 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                I3
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="I4"
-                class="border bus-${index}-I4 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                I4
-              </button>
-            </div>
-            <!-- J -->
-            <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="J1"
-                class="border bus-${index}-J1 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                J1
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="J2"
-                class="border bus-${index}-J2 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                J2
-              </button>
-              <p class="w-[40px] h-auto leading-8 text-center"></p>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="J3"
-                class="border bus-${index}-J3 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                J3
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="J4"
-                class="border bus-${index}-J4 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                J4
-              </button>
-            </div>
-            <!-- K -->
-            <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="K1"
-                class="border bus-${index}-K1 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                K1
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="K2"
-                class="border bus-${index}-K2 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                K2
-              </button>
-             <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="K3"
-                class="border bus-${index}-K3 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                K3
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="K4"
-                class="border bus-${index}-K4 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center"
-              >
-                K4
-              </button>
-              <button
-                type="button"
-                onclick="getSelectedSeats(event)"
-                value="K5"
-                class="border bus-${index}-K5 cursor-pointer border-gray-300 bg-white w-[40px] h-auto leading-8 text-center">
-                K5
-              </button>
-            </div>
+          <div class="seatStructure-${index} flex flex-col space-y-2 pb-6">
           </div>
         </div>
         <!-- Checkout -->
@@ -626,15 +267,17 @@ busesCol.innerHTML = buses
                 </div>
                 <div
                   id='selectedSeats-${index}'
-                  class="hidden  flex-col justify-center w-[300px] border border-gray-300 px-3 py-2 items-center space-x-2"
+                  class="hidden flex-col justify-center w-[300px] border border-gray-300 px-3 py-2 items-center space-x-2"
                 >
                  </div>
               </div>
-              <div class="text-gray-600 text-lg mt-2 font-bold">
+              <div class="text-gray-600 flex gap-x-2 items-center text-lg mt-2 font-bold">
                 <h1>Total Seats :</h1>
+                <h1 class='totalSeats-${index}'></h1>
               </div>
-              <div class="text-gray-600 text-lg mt-2 font-bold">
+              <div class="text-gray-600 flex gap-x-2 items-center text-lg mt-2 font-bold">
                 <h1>Total Amount :</h1>
+                <h1 class='totalAmount-${index}'></h1>
               </div>
               <div class="text-gray-600 text-lg mt-2 font-bold">
                 <label for="">Choose Boarding Point & Time :</label>
@@ -665,7 +308,62 @@ busesCol.innerHTML = buses
   })
   .join("");
 
+buses.forEach((bus, index) => {
+  const inputSeatStructure = document.querySelector(`.seatStructure-${index}`);
+
+  if (bus.seatStructure[0].length === 5) {
+    inputSeatStructure.innerHTML = bus.seatStructure
+      .map((seatRow) => {
+        return `
+    <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
+    <button
+      type="button"
+      onclick="getSelectedSeats(event)"
+      value="${seatRow[0]}"
+      class="border bus-${index}-${seatRow[0]} cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
+    >
+    ${seatRow[0]}
+    </button>
+    <button
+      type="button"
+      onclick="getSelectedSeats(event)"
+      value="${seatRow[1]}"
+      class="border bus-${index}-${seatRow[1]} cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
+    >
+    ${seatRow[1]}
+    </button>
+    <p class="w-[40px] h-auto leading-8 text-center"></p>
+    <button
+      type="button"
+      onclick="getSelectedSeats(event)"
+      value="${seatRow[3]}"
+      class="border bus-${index}-${seatRow[3]} cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
+    >
+    ${seatRow[3]} 
+    </button>
+    <button
+      type="button"
+      onclick="getSelectedSeats(event)"
+      value="${seatRow[4]}"
+      class="border bus-${index}-${seatRow[4]} cursor-pointer border-gray-300 bg-white w-[40px] h-autol leading-8 text-center"
+    >
+    ${seatRow[4]}
+    </button>
+  </div>
+  `;
+      })
+      .join("");
+  }
+});
+
 const ViewSeats = (e) => {
+  // Delete show selected seats
+  buses.forEach((bus, index) => {
+    const showSelectedSeats = document.querySelector(`#selectedSeats-${index}`);
+    showSelectedSeats.classList.add("hidden");
+    showSelectedSeats.classList.remove("flex");
+  });
+
   // Turns seat white after closing seats of a certain bus
   if (selectedSeats.length > 0) {
     selectedSeats.forEach((seat) => {
@@ -680,22 +378,6 @@ const ViewSeats = (e) => {
       }
     });
   }
-
-  selectedSeats = [];
-
-  // Disable booked Seats
-  buses.forEach((bus, index) => {
-    if (bus.bookedSeats.length > 0) {
-      bus.bookedSeats.forEach((seat) => {
-        let buttonToBeDisabled = document.querySelector(
-          `.bus-${index}-${seat}`
-        );
-        buttonToBeDisabled.classList.add("bg-gray-500");
-        buttonToBeDisabled.classList.add("text-white");
-        buttonToBeDisabled.disabled = true;
-      });
-    }
-  });
 
   // View Seats
 
@@ -721,6 +403,21 @@ const ViewSeats = (e) => {
   } else {
     busSeat.classList.add("hidden");
     openOrCloseViews.innerText = "View Seats";
+  }
+
+  selectedSeats = [];
+
+  // Disable booked Seats
+
+  if (buses[e.target.name].bookedSeats.length > 0) {
+    buses[e.target.name].bookedSeats.forEach((seat) => {
+      const buttonToBeDisabled = document.querySelector(
+        `.bus-${e.target.name}-${seat}`
+      );
+      buttonToBeDisabled.classList.add("bg-gray-500");
+      buttonToBeDisabled.classList.add("text-white");
+      buttonToBeDisabled.disabled = true;
+    });
   }
 };
 
