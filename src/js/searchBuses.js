@@ -12,6 +12,10 @@ const buses = [
       ["A1", "A2", "X", "A3", "A4"],
       ["B1", "B2", "X", "B3", "B4"],
     ],
+    boardingPoints: [
+      ["Gulistan", "9.30am"],
+      ["Gabtoli", "10.00am"],
+    ],
   },
   {
     name: "Elish Paribahan",
@@ -22,8 +26,12 @@ const buses = [
     fare: "692",
     bookedSeats: [],
     seatStructure: [
-      ["A1", "A2", "X", "A3", "A4"],
-      ["B1", "B2", "X", "B3", "B4"],
+      ["A1", "A2", "X", "A3"],
+      ["B1", "B2", "X", "B3"],
+    ],
+    boardingPoints: [
+      ["Kakrail", "9.30am"],
+      ["Arambagh", "10.00am"],
     ],
   },
   {
@@ -38,25 +46,37 @@ const buses = [
       ["A1", "A2", "X", "A3", "A4"],
       ["B1", "B2", "X", "B3", "B4"],
     ],
-  },
-  {
-    name: "Elish Paribahan",
-    busType: "MP",
-    coachNo: "305-SP-M",
-    departureTime: "4:69",
-    seatAvailable: "25",
-    fare: "692",
-    bookedSeats: [],
-    seatStructure: [
-      ["A1", "A2", "X", "A3", "A4"],
-      ["B1", "B2", "X", "B3", "B4"],
+    boardingPoints: [
+      ["Saydabad", "9.30am"],
+      ["Jatrabari", "10.00am"],
     ],
   },
 ];
 
 let selectedSeats = [];
-let totalSeats = "";
-let totalAmount = "";
+let totalSelectedSeats = "";
+let totalAmountofSeats = "";
+let selectedBoardingPointAndTime = "";
+
+const getData = (e) => {
+  const busNo =
+    e.composedPath()[0].classList[1].length < 5
+      ? e.composedPath()[0].classList[1].slice(4, 5)
+      : e.composedPath()[0].classList[1].slice(4, 6);
+
+  if (selectedSeats.length > 0 && selectedBoardingPointAndTime) {
+    totalSelectedSeats = selectedSeats.length;
+    totalAmountofSeats = totalSelectedSeats * buses[busNo].fare;
+
+    console.log(
+      totalSelectedSeats,
+      totalAmountofSeats,
+      selectedBoardingPointAndTime
+    );
+  } else {
+    alert("Please Select A Seat and Boarding Point");
+  }
+};
 
 const deleteShowSelectedSeats = (e) => {
   const busNo =
@@ -183,6 +203,11 @@ const getSelectedSeats = (e) => {
   }
 };
 
+const getBoardingPointAndTime = (e) => {
+  selectedBoardingPointAndTime = e.target.value;
+};
+
+// Prints Each Bus
 const busesCol = document.querySelector("#busesCol");
 
 busesCol.innerHTML = buses
@@ -283,18 +308,17 @@ busesCol.innerHTML = buses
                 <label for="">Choose Boarding Point & Time :</label>
                 <select
                   name=""
-                  id=""
+                  onchange='getBoardingPointAndTime(event)'
+                  id="boardingPoints-${index}"
                   class="w-full appearance-none focus:outline-none text-gray-600 border-b-2 p-2 text-lg border-blue-400 bg-transparent"
                 >
-                  <option selected="">Please Select</option>
-                  <option value="volvo">RAJARBAGH</option>
-                  <option value="saab">ARAMBAGH</option>
                 </select>
               </div>
               <div>
                 <button
                   type="button"
-                  class="mt-3 w-full px-2 py-2 border-2 border-blue-600 text-blue-600 font-medium text-sm leading-tight uppercase rounded hover:bg-blue-600 hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                  onclick='getData(event)'
+                  class="mt-3 bus-${index} w-full px-2 py-2 border-2 border-blue-600 text-blue-600 font-medium text-sm leading-tight uppercase rounded hover:bg-blue-600 hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                 >
                   Next
                 </button>
@@ -308,51 +332,45 @@ busesCol.innerHTML = buses
   })
   .join("");
 
+// Prints Seat Structure
 buses.forEach((bus, index) => {
   const inputSeatStructure = document.querySelector(`.seatStructure-${index}`);
 
-  if (bus.seatStructure[0].length === 5) {
-    inputSeatStructure.innerHTML = bus.seatStructure
-      .map((seatRow) => {
-        return `
-    <div class="grid grid-cols-5 gap-x-2 mx-1 md:mx-2">
-    <button
+  let generatedHTML = "";
+
+  for (let row of bus.seatStructure) {
+    generatedHTML += `<div class="flex gap-x-2 mx-1 md:mx-2">`;
+    for (let seat of row) {
+      if (seat === "X") {
+        generatedHTML += `<p class="w-[40px] h-auto leading-8 text-center"></p>`;
+        continue;
+      }
+      generatedHTML += `<button
       type="button"
       onclick="getSelectedSeats(event)"
-      value="${seatRow[0]}"
-      class="border bus-${index}-${seatRow[0]} cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
-    >
-    ${seatRow[0]}
-    </button>
-    <button
-      type="button"
-      onclick="getSelectedSeats(event)"
-      value="${seatRow[1]}"
-      class="border bus-${index}-${seatRow[1]} cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
-    >
-    ${seatRow[1]}
-    </button>
-    <p class="w-[40px] h-auto leading-8 text-center"></p>
-    <button
-      type="button"
-      onclick="getSelectedSeats(event)"
-      value="${seatRow[3]}"
-      class="border bus-${index}-${seatRow[3]} cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
-    >
-    ${seatRow[3]} 
-    </button>
-    <button
-      type="button"
-      onclick="getSelectedSeats(event)"
-      value="${seatRow[4]}"
-      class="border bus-${index}-${seatRow[4]} cursor-pointer border-gray-300 bg-white w-[40px] h-autol leading-8 text-center"
-    >
-    ${seatRow[4]}
-    </button>
-  </div>
-  `;
-      })
-      .join("");
+      value="${seat}"
+      class="border bus-${index}-${seat} cursor-pointer border-gray-300 bg-white  w-[40px] h-auto leading-8 text-center"
+      >
+    ${seat}
+    </button>`;
+    }
+    generatedHTML += `</div>`;
+
+    inputSeatStructure.innerHTML = generatedHTML;
+  }
+});
+
+// Prints EachBus Boarding Point and Time
+buses.forEach((bus, index) => {
+  const inputBoardingPointandTime = document.getElementById(
+    `boardingPoints-${index}`
+  );
+  inputBoardingPointandTime.innerHTML += `<option selected="">Please Select</option>`;
+
+  for (let point of bus.boardingPoints) {
+    inputBoardingPointandTime.innerHTML += `
+    <option value="${point[0]} - ${point[1]}">${point[0]} (${point[1]})</option>
+    `;
   }
 });
 
@@ -398,8 +416,8 @@ const ViewSeats = (e) => {
         }
       }
     });
-
     openOrCloseViews.innerText = "Close Seats";
+    selectedBoardingPointAndTime = "";
   } else {
     busSeat.classList.add("hidden");
     openOrCloseViews.innerText = "View Seats";
