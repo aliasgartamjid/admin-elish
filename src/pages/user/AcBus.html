@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../dist/output.css" rel="stylesheet" />
-    <title>Elish Paribahan</title>
+    <link href="../../../dist/output.css" rel="stylesheet" />
+    <title>Elish Paribahan | Our Service</title>
   </head>
   <body>
-    <!-- Call Now -->
+    <!-- Navs -->
     <nav class="py-3 px-5">
       <div>
         <h1
@@ -19,14 +19,13 @@
         </h1>
       </div>
     </nav>
-    <!-- Actual Nav -->
     <nav class="flex justify-between px-5 items-center py-5 shadow-lg">
-      <a href="../pages/Home.html" class="cursor-pointer">
+      <a href="../user/Home.html" class="cursor-pointer">
         <h1
-          class="font-bold flex gap-x-2 items-center text-lg md:text-xl lg:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+          class="font-bold flex gap-x-2 items-center text-lg md:text-xl lg:text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
         >
           <img
-            src="../../images/elishLogo.png"
+            src="../../../images/elishLogo.png"
             class="w-[120px] h-[50px] md:w-[240px] md:h-[80px] rounded-md"
             alt=""
           />
@@ -37,25 +36,25 @@
         class="hidden md:flex items-center space-x-8 md:text-lg text-gray-600"
       >
         <a href="" class="flex gap-x-1"
-          ><img src="../../images/homeIcon.svg" alt="" />
+          ><img src="../../../images/homeIcon.svg" alt="" />
           <span class="border-b-2 border-blue-400">Home</span>
         </a>
-        <a href="/src/pages/OurService.html" class="hover:underline"
+        <a href="../user/OurService.html" class="hover:underline"
           >Our Service</a
         >
         <a href="" class="hover:underline">Contact Us</a>
         <a href="" class="hover:underline">Print E-Ticket</a>
       </div>
       <div class="flex md:hidden cursor-pointer" onclick="hamburgerMenu()">
-        <img src="../../images/hamburger-menu-svgrepo-com.svg" alt="" />
+        <img src="../../../images/hamburger-menu-svgrepo-com.svg" alt="" />
       </div>
     </nav>
-    <!-- HamburgerMenu Options -->
+    <!-- Hamburger -->
     <div class="bg-white hidden shadow-lg hamburger">
       <div
         class="flex flex-col justify-center items-center space-y-5 text-lg py-10 text-gray-600"
       >
-        <a href="../pages/Home.html" class="border-b-2 border-blue-400">Home</a>
+        <a href="../pages/Home.html" class="hover:underline">Home</a>
         <a href="../pages/OurService.html" class="hover:underline"
           >Our Service</a
         >
@@ -63,33 +62,6 @@
         <a href="" class="hover:underline">Print E-Ticket</a>
       </div>
     </div>
-    <main>
-      <!-- Heading -->
-      <div class="mx-2 md:mx-5 p-4 mt-4 bg-blue-200/30 rounded-md">
-        <h1 class="text-gray-600">Dhaka - Coxs Bazar On 19-04-2022</h1>
-        <h1
-          class="font-bold flex gap-x-2 items-center text-2xl md:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
-        >
-          Available Buses
-        </h1>
-      </div>
-      <!-- Buses -->
-      <div>
-        <!-- Column info -->
-        <div
-          class="hidden md:grid grid-cols-5 mx-2 md:mx-5 mt-3 p-4 text-gray-600 text-xl font-bold border border-gray-300"
-        >
-          <h1 class="col-span-2">Operator & Coach Info</h1>
-          <h1>Departure Time</h1>
-          <h1>Seats Capacity</h1>
-          <h1 class="text-right">Fare (BDT)</h1>
-        </div>
-        <!-- Buses -->
-        <div id="busesCol" class="flex flex-col gap-y-3 mx-2 md:mx-5 mt-3">
-          <!-- Bus -->
-        </div>
-      </div>
-    </main>
     <!-- footer -->
     <footer
       class="py-4 mt-5 w-[95vw] md:max-w-6xl mx-auto flex flex-col space-y-8 items-center justify-center"
@@ -170,9 +142,15 @@
         </div>
       </div>
     </footer>
-    <div class="mt-3 flex justify-center py-4">
-      <p class="text-gray-600 text-sm">DEVELOPED BY BotSofware</p>
-    </div>
   </body>
-  <script src="../js/searchBuses.js"></script>
+  <script>
+    const hamburgerMenu = () => {
+      const hamburger = document.querySelector(".hamburger");
+      if (hamburger.classList.contains("hidden")) {
+        hamburger.classList.remove("hidden");
+      } else {
+        hamburger.classList.add("hidden");
+      }
+    };
+  </script>
 </html>

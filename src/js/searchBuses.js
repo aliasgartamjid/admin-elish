@@ -1,16 +1,17 @@
 // Buses from database
 const buses = [
   {
-    name: "Elish Paribahan",
-    busType: "SP",
-    coachNo: "305-SP-K",
-    departureTime: "4:20",
+    coachNo: "Coach No: 305-DHA-BAR-M",
+    busType: "AC",
+    startingTime: "4:20 pm",
     seatAvailable: "69",
     fare: "800",
     bookedSeats: ["A1"],
+    startingPoint: "Jatrabari",
     seatStructure: [
       ["A1", "A2", "X", "A3", "A4"],
       ["B1", "B2", "X", "B3", "B4"],
+      ["C1", "C2", "C3", "C4", "C5"],
     ],
     boardingPoints: [
       ["Gulistan", "9.30am"],
@@ -18,13 +19,13 @@ const buses = [
     ],
   },
   {
-    name: "Elish Paribahan",
-    busType: "MP",
-    coachNo: "305-SP-M",
-    departureTime: "4:69",
+    coachNo: "Coach No: 305-DHA-COX-A",
+    busType: "AC",
+    startingTime: "4:69 pm",
     seatAvailable: "25",
     fare: "692",
     bookedSeats: [],
+    startingPoint: "Motijheel",
     seatStructure: [
       ["A1", "A2", "X", "A3"],
       ["B1", "B2", "X", "B3"],
@@ -35,13 +36,13 @@ const buses = [
     ],
   },
   {
-    name: "Elish Paribahan",
-    busType: "MP",
-    coachNo: "305-SP-M",
-    departureTime: "4:69",
+    coachNo: "Coach No: 305-BAR-DHA-N",
+    busType: "AC",
+    startingTime: "4:69 pm",
     seatAvailable: "25",
     fare: "692",
     bookedSeats: [],
+    startingPoint: "Arambagh",
     seatStructure: [
       ["A1", "A2", "X", "A3", "A4"],
       ["B1", "B2", "X", "B3", "B4"],
@@ -219,12 +220,13 @@ busesCol.innerHTML = buses
       class="grid grid-cols-1 gap-y-3 md:gap-y-0 md:grid-cols-5 p-4 text-lg hover:bg-blue-200/30 cursor-pointer"
     >
       <div class="col-span-1 gap-y-2 md:gap-y-0 md:col-span-2">
-        <h1 class="font-bold text-xl">${bus.name}</h1>
+        <h1 class='font-bold text-xl text-gray-600 md:hidden'>Starting Time : ${bus.startingTime}</h1>
+        <h1 class="">${bus.coachNo}</h1>
         <h1>Bus Type : ${bus.busType}</h1>
-        <h1>Coach No : ${bus.coachNo}</h1>
+        <h1>Starting Point : ${bus.startingPoint}</h1>
       </div>
       <div>
-        <h1>Depurture Time : ${bus.departureTime}</h1>
+        <h1 class='font-bold text-xl text-gray-600 hidden md:flex'>Starting Time : ${bus.startingTime}</h1>
       </div>
       <div><h1>Seat Available : ${bus.seatAvailable}</h1></div>
       <div class="md:text-right">

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../dist/output.css" rel="stylesheet" />
+    <link href="../../../dist/output.css" rel="stylesheet" />
     <title>Elish Paribahan | Our Service</title>
   </head>
   <body>
@@ -25,7 +25,7 @@
           class="font-bold flex gap-x-2 items-center text-lg md:text-xl lg:text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
         >
           <img
-            src="../../images/elishLogo.png"
+            src="../../../images/elishLogo.png"
             class="w-[120px] h-[50px] md:w-[240px] md:h-[80px] rounded-md"
             alt=""
           />
@@ -36,7 +36,7 @@
         class="hidden md:flex items-center space-x-8 md:text-lg text-gray-600"
       >
         <a href="" class="flex gap-x-1"
-          ><img src="../../images/homeIcon.svg" alt="" />
+          ><img src="../../../images/homeIcon.svg" alt="" />
           <span class="border-b-2 border-blue-400">Home</span>
         </a>
         <a href="/src/pages/OurService.html" class="hover:underline"
@@ -46,7 +46,7 @@
         <a href="" class="hover:underline">Print E-Ticket</a>
       </div>
       <div class="flex md:hidden cursor-pointer" onclick="hamburgerMenu()">
-        <img src="../../images/hamburger-menu-svgrepo-com.svg" alt="" />
+        <img src="../../../images/hamburger-menu-svgrepo-com.svg" alt="" />
       </div>
     </nav>
     <!-- Hamburger -->
@@ -55,7 +55,7 @@
         class="flex flex-col justify-center items-center space-y-5 text-lg py-10 text-gray-600"
       >
         <a href="../pages/Home.html" class="hover:underline">Home</a>
-        <a href="../pages/OurService.html" class="hover:underline"
+        <a href="../pages/OurService.html" class="border-b-2 border-blue-400"
           >Our Service</a
         >
         <a href="" class="hover:underline">Contact Us</a>
@@ -64,106 +64,66 @@
     </div>
     <!-- Cards -->
     <div
-      class="flex min-h-[70vh] justify-center mt-4 space-y-10 flex-col items-center py-10 mx-10 shadow-2xl"
+      class="flex min-h-[70vh] justify-center mt-4 space-y-10 flex-col items-center py-10 mx-5 md:mx-10 shadow-2xl"
     >
       <div>
         <h1
           class="font-bold text-5xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
         >
-          Pickup Points
+          Our Services
         </h1>
       </div>
       <div
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6"
       >
-        <div
+        <a
+          href="../pages/AcBus.html"
+          class="flex flex-col hover:scale-110 cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
+        >
+          <h1
+            class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+          >
+            AC BUS
+          </h1>
+          <p class="text-lg text-gray-600">Dhaka - Barishal</p>
+        </a>
+        <a
           href="../pages/NonACBus.html"
           class="flex hover:scale-110 flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
         >
           <h1
             class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
           >
-            Dhaka
+            NON AC
           </h1>
-          <p class="text-lg text-gray-600">Jatrabari</p>
-        </div>
-        <div
-          href="../pages/NonACBus.html"
+          <p class="text-lg text-gray-600">Dhaka - Barishal</p>
+        </a>
+        <a
+          href="../pages/Rent.html"
           class="flex hover:scale-110 flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
         >
           <h1
             class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
           >
-            Dhaka
+            RENT A BUS
           </h1>
-          <p class="text-lg text-gray-600">Jatrabari</p>
-        </div>
-        <div
-          href="../pages/NonACBus.html"
-          class="flex hover:scale-110 flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
+          <p class="text-lg text-gray-600">0 - 400 Km</p>
+        </a>
+        <a
+          href="../pages/pickuppoints.html"
+          class="flex items-center hover:scale-110 flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
         >
           <h1
             class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
           >
-            Dhaka
+            Our Pickup Point
           </h1>
-          <p class="text-lg text-gray-600">Jatrabari</p>
-        </div>
-        <div
-          href="../pages/NonACBus.html"
-          class="flex hover:scale-110 flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
-        >
-          <h1
-            class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
-          >
-            Dhaka
-          </h1>
-          <p class="text-lg text-gray-600">Jatrabari</p>
-        </div>
-        <div
-          href="../pages/NonACBus.html"
-          class="flex hover:scale-110 flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
-        >
-          <h1
-            class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
-          >
-            Dhaka
-          </h1>
-          <p class="text-lg text-gray-600">Jatrabari</p>
-        </div>
-        <div
-          href="../pages/NonACBus.html"
-          class="flex hover:scale-110 flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
-        >
-          <h1
-            class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
-          >
-            Dhaka
-          </h1>
-          <p class="text-lg text-gray-600">Jatrabari</p>
-        </div>
-        <div
-          href="../pages/NonACBus.html"
-          class="flex hover:scale-110 flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
-        >
-          <h1
-            class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
-          >
-            Dhaka
-          </h1>
-          <p class="text-lg text-gray-600">Jatrabari</p>
-        </div>
-        <div
-          href="../pages/NonACBus.html"
-          class="flex hover:scale-110 flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
-        >
-          <h1
-            class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
-          >
-            Dhaka
-          </h1>
-          <p class="text-lg text-gray-600">Jatrabari</p>
-        </div>
+          <img
+            class="w-14 h-14 -translate-x-2"
+            src="https://img.icons8.com/ios/50/000000/passenger-with-baggage.png"
+          />
+          <p class="text-lg text-gray-600"></p>
+        </a>
       </div>
     </div>
     <!-- footer -->

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../dist/output.css" rel="stylesheet" />
+    <link href="../../../dist/output.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
@@ -15,23 +15,34 @@
     <div class="">
       <!-- Call Now -->
       <nav class="py-3 px-5">
-        <div>
+        <div
+          class="flex justify-between items-center w-full border-b border-blue-500"
+        >
           <h1
             href="tel:01711472684"
-            class="text-[16px] md:text-lg font-bold bg-clip-text border-b border-blue-500 text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+            class="text-[16px] md:text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
           >
             <a href="tel:01711472684">Call Now : 01711472684</a>
           </h1>
+          <a
+            href="/admin"
+            class="flex items-center cursor-pointer gap-x-2 text-gray-500 text-xs md:text-sm"
+            ><img
+              width="20"
+              src="https://img.icons8.com/ios/50/000000/login-rounded-right--v1.png"
+            />
+            Login</a
+          >
         </div>
       </nav>
       <!-- Actual Nav -->
       <nav class="flex justify-between px-5 items-center py-5 shadow-lg">
-        <a href="../pages/Home.html" class="cursor-pointer">
+        <a href="../user/Home.html" class="cursor-pointer">
           <h1
             class="font-bold flex gap-x-2 items-center text-lg md:text-xl lg:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
           >
             <img
-              src="../../images/elishLogo.png"
+              src="../../../images/elishLogo.png"
               class="w-[120px] h-[50px] md:w-[240px] md:h-[80px] rounded-md"
               alt=""
             />
@@ -42,17 +53,17 @@
           class="hidden md:flex items-center space-x-8 md:text-lg text-gray-600"
         >
           <a href="" class="flex gap-x-1"
-            ><img src="../../images/homeIcon.svg" alt="" />
+            ><img src="../../../images/homeIcon.svg" alt="" />
             <span class="border-b-2 border-blue-400">Home</span>
           </a>
-          <a href="/src/pages/OurService.html" class="hover:underline"
+          <a href="../user/OurService.html" class="hover:underline"
             >Our Service</a
           >
           <a href="" class="hover:underline">Contact Us</a>
           <a href="" class="hover:underline">Print E-Ticket</a>
         </div>
         <div class="flex md:hidden cursor-pointer" onclick="hamburgerMenu()">
-          <img src="../../images/hamburger-menu-svgrepo-com.svg" alt="" />
+          <img src="../../../images/hamburger-menu-svgrepo-com.svg" alt="" />
         </div>
       </nav>
       <!-- HamburgerMenu Options -->
@@ -60,10 +71,10 @@
         <div
           class="flex flex-col justify-center items-center space-y-5 text-lg py-10 text-gray-600"
         >
-          <a href="../pages/Home.html" class="border-b-2 border-blue-400"
+          <a href="../user/Home.html" class="border-b-2 border-blue-400"
             >Home</a
           >
-          <a href="../pages/OurService.html" class="hover:underline"
+          <a href="../user/OurService.html" class="hover:underline"
             >Our Service</a
           >
           <a href="" class="hover:underline">Contact Us</a>
@@ -82,7 +93,7 @@
               <div>
                 <div class="flex items-center justify-center space-x-5 py-2">
                   <label
-                    class="inline-flex text-[16px] md:text-xl lg:text-2xl font-semibold items-center"
+                    class="inline-flex text-[16px] md:text-lg lg:text-xl font-semibold items-center"
                   >
                     <div
                       class="flex justify-center items-center w-6 h-6 border-2 mr-1 border-blue-500 rounded-full text-center"
@@ -96,7 +107,7 @@
                     All
                   </label>
                   <label
-                    class="inline-flex text-[16px] md:text-xl lg:text-2xl items-center font-semibold"
+                    class="inline-flex text-[16px] md:text-lg lg:text-xl items-center font-semibold"
                   >
                     <div
                       class="flex justify-center items-center w-6 h-6 border-2 mr-1 border-blue-500 rounded-full text-center"
@@ -110,7 +121,7 @@
                     AC
                   </label>
                   <label
-                    class="inline-flex text-[16px] md:text-xl lg:text-2xl font-semibold items-center"
+                    class="inline-flex text-[16px] md:text-lg lg:text-xl font-semibold items-center"
                   >
                     <div
                       class="flex justify-center items-center w-6 h-6 border-2 mr-1 border-blue-500 rounded-full text-center"
@@ -133,8 +144,8 @@
                 >
                   <div class="flex items-center gap-x-1">
                     <img
-                      src="../../images/get-on-bus.svg"
-                      class="w-7 h-7 md:w-11 md:h-11 lg:w-12 lg:h-12"
+                      src="../../../images/get-on-bus.svg"
+                      class="w-7 h-7 md:w-11 md:h-11"
                     />
                     <label
                       class="text-gray-600 text-[16px] md:text-xl lg:text-2xl"
@@ -158,7 +169,7 @@
                 >
                   <div class="flex items-center gap-x-1">
                     <img
-                      class="w-7 h-7 md:w-11 md:h-11 lg:w-12 lg:h-12"
+                      class="w-7 h-7 md:w-11 md:h-11"
                       src="https://img.icons8.com/ios/50/000000/get-off-bus.png"
                     />
                     <label class="text-gray-600 text-[16px] md:text-xl"
@@ -182,7 +193,7 @@
                   <div class="flex items-center gap-x-1">
                     <img
                       src="https://img.icons8.com/dotty/80/000000/planner.png"
-                      class="w-8 h-8 md:w-11 md:h-11 lg:w-12 lg:h-12"
+                      class="w-8 h-8 md:w-11 md:h-11"
                     />
                     <label class="flex text-gray-600 text-[16px] md:text-xl"
                       >Depurture <span class="ml-1">Date</span></label
@@ -203,7 +214,7 @@
                   class="inline-flex items-center justify-center w-4/5 md:w-2/5 px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-sm leading-tight uppercase rounded hover:bg-blue-600 hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                 >
                   <img
-                    src="../../images/searchIcon.svg"
+                    src="../../../images/searchIcon.svg"
                     class="w-5 h-5 md:w-6 md:h-6 mr-1"
                     alt=""
                   />
@@ -214,20 +225,31 @@
           </form>
         </div>
         <!-- Image Slider -->
-        <div class="my-10">
+        <div
+          class="mt-10 mb-2 w-11/12 md:max-w-[900px] mx-auto shadow-2xl rounded-md"
+        >
           <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide flex justify-center">
+              <div class="swiper-slide flex justify-center w-full h-full">
                 <img
-                  class="w-11/12 md:w-4/5 h-auto md:h-[650px] rounded-lg shadow-2xl object-scale-down"
-                  src="../../images/ezgif-2-bdd9dccac5.jpg"
+                  class="rounded-lg object-scale-down"
+                  src="../../../images/bus01.jpg"
                   alt=""
                 />
               </div>
-              <div class="swiper-slide flex justify-center">
+              <div class="swiper-slide flex justify-center w-full h-full">
                 <img
-                  class="w-11/12 md:w-4/5 h-auto md:h-[650px] shadow-2xl rounded-lg object-scale-down"
-                  src="../../images/received-508080877487128.jpg"
+                  class="rounded-lg object-scale-down"
+                  src="../../../images/bus02.jpg"
+                  alt=""
+                />
+              </div>
+              <div
+                class="swiper-slide relative flex justify-center w-full h-full"
+              >
+                <img
+                  class="rounded-lg object-scale-down"
+                  src="../../../images/bus03.jpg"
                   alt=""
                 />
               </div>
@@ -237,7 +259,7 @@
         </div>
         <!-- Services -->
         <div
-          class="flex space-y-10 flex-col items-center py-10 mx-5 md:mx-10 my-20 shadow-2xl"
+          class="flex space-y-10 flex-col items-center py-10 mx-5 md:mx-10 mt-2 mb-5 shadow-2xl"
         >
           <div>
             <h1
@@ -250,7 +272,7 @@
             class="grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6"
           >
             <div
-              class="flex flex-col hover:scale-110 cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
+              class="flex flex-col hover:scale-110 cursor-pointer justify-center space-y-3 bg-white h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
             >
               <h1
                 class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
@@ -260,7 +282,7 @@
               <p class="text-lg text-gray-600">Dhaka - Barishal</p>
             </div>
             <div
-              class="flex hover:scale-110 flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
+              class="flex hover:scale-110 flex-col cursor-pointer justify-center space-y-3 bg-white h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
             >
               <h1
                 class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
@@ -270,7 +292,7 @@
               <p class="text-lg text-gray-600">Dhaka - Barishal</p>
             </div>
             <div
-              class="flex hover:scale-110 flex-col cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
+              class="flex hover:scale-110 flex-col cursor-pointer justify-center space-y-3 bg-white h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
             >
               <h1
                 class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
@@ -297,7 +319,7 @@
             href="../pages/pickuppoints.html"
           >
             <div
-              class="flex flex-col hover:scale-110 cursor-pointer justify-center space-y-3 h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
+              class="flex flex-col hover:scale-110 cursor-pointer justify-center space-y-3 bg-white h-[300px] w-[300px] shadow-xl text-center border-2 border-blue-400 p-4 rounded-lg hover:bg-blue-200/30 transition ease-out"
             >
               <h1
                 class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
@@ -438,5 +460,5 @@
     </div>
   </body>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-  <script src="../js/Home.js"></script>
+  <script src="../../js/Home.js"></script>
 </html>
