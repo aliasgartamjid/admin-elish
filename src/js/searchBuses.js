@@ -17,6 +17,10 @@ const buses = [
       ["Gulistan", "9.30am"],
       ["Gabtoli", "10.00am"],
     ],
+    droppingPoints: [
+      ["Barishal Town", "9.30am"],
+      ["Borguna", "10.00am"],
+    ],
   },
   {
     coachNo: "Coach No: 305-DHA-COX-A",
@@ -31,8 +35,12 @@ const buses = [
       ["B1", "B2", "X", "B3"],
     ],
     boardingPoints: [
-      ["Kakrail", "9.30am"],
+      ["Kakrail", "10.30am"],
       ["Arambagh", "10.00am"],
+    ],
+    droppingPoints: [
+      ["Gulistan", "9.30am"],
+      ["Gabtoli", "10.00am"],
     ],
   },
   {
@@ -51,6 +59,10 @@ const buses = [
       ["Saydabad", "9.30am"],
       ["Jatrabari", "10.00am"],
     ],
+    droppingPoints: [
+      ["Gulistan", "9.30am"],
+      ["Gabtoli", "10.00am"],
+    ],
   },
 ];
 
@@ -58,6 +70,7 @@ let selectedSeats = [];
 let totalSelectedSeats = "";
 let totalAmountofSeats = "";
 let selectedBoardingPointAndTime = "";
+let selectedDroppingPointAndTime = "";
 
 const getData = (e) => {
   const busNo =
@@ -65,14 +78,19 @@ const getData = (e) => {
       ? e.composedPath()[0].classList[1].slice(4, 5)
       : e.composedPath()[0].classList[1].slice(4, 6);
 
-  if (selectedSeats.length > 0 && selectedBoardingPointAndTime) {
+  if (
+    selectedSeats.length > 0 &&
+    selectedBoardingPointAndTime &&
+    selectedDroppingPointAndTime
+  ) {
     totalSelectedSeats = selectedSeats.length;
     totalAmountofSeats = totalSelectedSeats * buses[busNo].fare;
 
     console.log(
       totalSelectedSeats,
       totalAmountofSeats,
-      selectedBoardingPointAndTime
+      selectedBoardingPointAndTime,
+      selectedDroppingPointAndTime
     );
   } else {
     alert("Please Select A Seat and Boarding Point");
@@ -208,6 +226,10 @@ const getBoardingPointAndTime = (e) => {
   selectedBoardingPointAndTime = e.target.value;
 };
 
+const getdroppingPointAndTime = (e) => {
+  selectedDroppingPointAndTime = e.target.value;
+};
+
 // Prints Each Bus
 const busesCol = document.querySelector("#busesCol");
 
@@ -217,16 +239,16 @@ busesCol.innerHTML = buses
     class="bus-${index} border border-gray-300 text-gray-600 shadow-lg"
   >
     <div
-      class="grid grid-cols-1 gap-y-3 md:gap-y-0 md:grid-cols-5 p-4 text-lg hover:bg-blue-200/30 cursor-pointer"
+      class="grid grid-cols-1 gap-y-1 md:gap-y-0 md:grid-cols-5 p-4 text-lg hover:bg-blue-200/30 cursor-pointer"
     >
       <div class="col-span-1 gap-y-2 md:gap-y-0 md:col-span-2">
-        <h1 class='font-bold text-xl text-gray-600 md:hidden'>Starting Time : ${bus.startingTime}</h1>
+        <h1 class='font-bold text-xl text-gray-600 md:hidden'>Starting Time : ${bus.boardingPoints[0][1]}</h1>
         <h1 class="">${bus.coachNo}</h1>
         <h1>Bus Type : ${bus.busType}</h1>
-        <h1>Starting Point : ${bus.startingPoint}</h1>
+        <h1>Starting Point : ${bus.boardingPoints[0][0]}</h1>
       </div>
       <div>
-        <h1 class='font-bold text-xl text-gray-600 hidden md:flex'>Starting Time : ${bus.startingTime}</h1>
+        <h1 class='font-bold text-xl text-gray-600 hidden md:flex'>Starting Time : ${bus.boardingPoints[0][1]}</h1>
       </div>
       <div><h1>Seat Available : ${bus.seatAvailable}</h1></div>
       <div class="md:text-right">
@@ -307,11 +329,21 @@ busesCol.innerHTML = buses
                 <h1 class='totalAmount-${index}'></h1>
               </div>
               <div class="text-gray-600 text-lg mt-2 font-bold">
-                <label for="">Choose Boarding Point & Time :</label>
+                <label for="">Choose Boarding Counter & Time :</label>
                 <select
                   name=""
                   onchange='getBoardingPointAndTime(event)'
                   id="boardingPoints-${index}"
+                  class="w-full appearance-none focus:outline-none text-gray-600 border-b-2 p-2 text-lg border-blue-400 bg-transparent"
+                >
+                </select>
+              </div>
+              <div class="text-gray-600 text-lg mt-2 font-bold">
+                <label for="">Choose Dropping Counter & Time :</label>
+                <select
+                  name=""
+                  onchange='getdroppingPointAndTime(event)'
+                  id="droppingPoints-${index}"
                   class="w-full appearance-none focus:outline-none text-gray-600 border-b-2 p-2 text-lg border-blue-400 bg-transparent"
                 >
                 </select>
@@ -362,7 +394,7 @@ buses.forEach((bus, index) => {
   }
 });
 
-// Prints EachBus Boarding Point and Time
+// Prints EachBus Boarding Point and Time and Dropping Point and Time
 buses.forEach((bus, index) => {
   const inputBoardingPointandTime = document.getElementById(
     `boardingPoints-${index}`
@@ -371,6 +403,17 @@ buses.forEach((bus, index) => {
 
   for (let point of bus.boardingPoints) {
     inputBoardingPointandTime.innerHTML += `
+    <option value="${point[0]} - ${point[1]}">${point[0]} (${point[1]})</option>
+    `;
+  }
+
+  const inputDroppingPointandTime = document.getElementById(
+    `droppingPoints-${index}`
+  );
+  inputDroppingPointandTime.innerHTML += `<option selected="">Please Select</option>`;
+
+  for (let point of bus.droppingPoints) {
+    inputDroppingPointandTime.innerHTML += `
     <option value="${point[0]} - ${point[1]}">${point[0]} (${point[1]})</option>
     `;
   }
@@ -447,5 +490,41 @@ const hamburgerMenu = () => {
     hamburger.classList.remove("hidden");
   } else {
     hamburger.classList.add("hidden");
+  }
+};
+
+const removeOrAddSearch = () => {
+  const search = document.getElementById("searchBuses");
+  const searchAgainButton = document.getElementById("searchAgainButton");
+  if (search.classList.contains("hidden")) {
+    search.classList.remove("hidden");
+    searchAgainButton.innerHTML = `<h1>Search Again <span class='ml-2 px-2 py-0.5 rounded-full border-2 border-blue-700'>X</span></h1>`;
+  } else {
+    search.classList.add("hidden");
+    searchAgainButton.innerHTML = `<h1>Search Again</h1>`;
+  }
+};
+
+const checkboxOne = (e) => {
+  if (e.target.checked) {
+    document.querySelector(".checkboxOne").classList.add("bg-blue-400");
+  } else {
+    document.querySelector(".checkboxOne").classList.remove("bg-blue-400");
+  }
+};
+
+const checkboxTwo = (e) => {
+  if (e.target.checked) {
+    document.querySelector(".checkboxTwo").classList.add("bg-blue-400");
+  } else {
+    document.querySelector(".checkboxTwo").classList.remove("bg-blue-400");
+  }
+};
+
+const checkboxThree = (e) => {
+  if (e.target.checked) {
+    document.querySelector(".checkboxThree").classList.add("bg-blue-400");
+  } else {
+    document.querySelector(".checkboxThree").classList.remove("bg-blue-400");
   }
 };

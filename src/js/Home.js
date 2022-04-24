@@ -45,5 +45,3 @@ const checkboxThree = (e) => {
     document.querySelector(".checkboxThree").classList.remove("bg-blue-400");
   }
 };
-
-const getData = () => {};

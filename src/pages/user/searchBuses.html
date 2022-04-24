@@ -64,8 +64,160 @@
       </div>
     </div>
     <main>
+      <!-- Search Again button -->
+      <div class="w-full flex justify-center mt-5">
+        <button
+          class="px-3 py-2 border-2 border-blue-600 text-blue-600 font-medium text-sm leading-tight uppercase rounded hover:bg-blue-600 hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+          type="button"
+          onclick="removeOrAddSearch()"
+          id="searchAgainButton"
+        >
+          Search Again
+        </button>
+      </div>
+      <!-- Ticket Form -->
+      <div
+        id="searchBuses"
+        class="shadow-2xl w-11/12 hidden font-bold md:max-w-7xl px-1 py-4 md:px-4 md:py-4 mx-auto mt-2 md:mt-4 lg:mt-8 rounded-lg border-2 border-gray-500 bg-gradient-to-r from-gray-100 to-gray-300"
+      >
+        <form method="post" action="">
+          <div class="flex w-full flex-col space-y-3 px-2 md:px-4 py-4">
+            <!-- AC CHECK -->
+            <div>
+              <div class="flex items-center justify-center space-x-5 py-2">
+                <label
+                  class="inline-flex text-[16px] md:text-lg lg:text-xl font-semibold items-center"
+                >
+                  <div
+                    class="flex justify-center items-center w-6 h-6 border-2 mr-1 border-blue-500 rounded-full text-center"
+                  >
+                    <input
+                      class="checkboxOne appearance-none w-4 h-4 rounded-full"
+                      type="checkbox"
+                      onchange="checkboxOne(event)"
+                    />
+                  </div>
+                  All
+                </label>
+                <label
+                  class="inline-flex text-[16px] md:text-lg lg:text-xl items-center font-semibold"
+                >
+                  <div
+                    class="flex justify-center items-center w-6 h-6 border-2 mr-1 border-blue-500 rounded-full text-center"
+                  >
+                    <input
+                      class="checkboxTwo appearance-none w-4 h-4 rounded-full"
+                      type="checkbox"
+                      onchange="checkboxTwo(event)"
+                    />
+                  </div>
+                  AC
+                </label>
+                <label
+                  class="inline-flex text-[16px] md:text-lg lg:text-xl font-semibold items-center"
+                >
+                  <div
+                    class="flex justify-center items-center w-6 h-6 border-2 mr-1 border-blue-500 rounded-full text-center"
+                  >
+                    <input
+                      class="checkboxThree appearance-none w-4 h-4 rounded-full"
+                      type="checkbox"
+                      onchange="checkboxThree(event)"
+                    />
+                  </div>
+                  Non AC
+                </label>
+              </div>
+            </div>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 md:gap-x-5 gap-y-8 py-4"
+            >
+              <div
+                class="flex-shrink-0 items-center space-x-4 md:border-r-2 md:border-l-2 border-gray-500 px-1"
+              >
+                <div class="flex items-center gap-x-1">
+                  <img
+                    src="../../../images/get-on-bus.svg"
+                    class="w-7 h-7 md:w-11 md:h-11"
+                  />
+                  <label
+                    class="text-gray-600 text-[16px] md:text-xl lg:text-2xl"
+                  >
+                    From</label
+                  >
+                  <select
+                    name=""
+                    id=""
+                    class="w-full focus:outline-none text-gray-600 border-b-2 p-2 text-sm md:text-lg border-blue-400 bg-transparent"
+                  >
+                    <option selected="">Select City</option>
+                    <option value="volvo">DHAKA</option>
+                    <option value="saab">BARISHAL</option>
+                    <option value="opel">RAJSHAHI</option>
+                  </select>
+                </div>
+              </div>
+              <div
+                class="flex-shrink-0 items-center space-x-4 md:border-r-2 border-gray-500 px-2"
+              >
+                <div class="flex items-center gap-x-1">
+                  <img
+                    class="w-7 h-7 md:w-11 md:h-11"
+                    src="https://img.icons8.com/ios/50/000000/get-off-bus.png"
+                  />
+                  <label class="text-gray-600 text-[16px] md:text-xl">To</label>
+                  <select
+                    name=""
+                    id=""
+                    class="w-full focus:outline-none text-gray-600 border-b-2 p-2 text-sm lg:text-lg border-blue-400 bg-transparent"
+                  >
+                    <option selected="">Select City</option>
+                    <option value="volvo">BARISHAL</option>
+                    <option value="saab">RANGPUR</option>
+                    <option value="opel">DHAKA</option>
+                  </select>
+                </div>
+              </div>
+              <div
+                class="flex-shrink-0 items-center space-x-4 md:border-r-2 border-gray-500 px-1"
+              >
+                <div class="flex items-center gap-x-1">
+                  <img
+                    src="https://img.icons8.com/dotty/80/000000/planner.png"
+                    class="w-8 h-8 md:w-11 md:h-11"
+                  />
+                  <label class="flex text-gray-600 text-[16px] md:text-xl"
+                    >Depurture <span class="ml-1">Date</span></label
+                  >
+                  <input
+                    type="date"
+                    name=""
+                    id=""
+                    class="w-full bg-transparent focus:outline-none text-gray-600 border-b-2 p-2 text-sm lg:text-lg border-blue-400"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-center">
+              <button
+                onclick="getData()"
+                type="button"
+                class="inline-flex items-center justify-center w-4/5 md:w-2/5 px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-sm leading-tight uppercase rounded hover:bg-blue-600 hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+              >
+                <img
+                  src="../../../images/searchIcon.svg"
+                  class="w-5 h-5 md:w-6 md:h-6 mr-1"
+                  alt=""
+                />
+                Search Buses
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
       <!-- Heading -->
       <div class="mx-2 md:mx-5 p-4 mt-4 bg-blue-200/30 rounded-md">
+        <!-- Following h1 tag info should come from Home page -->
         <h1 class="text-gray-600">Dhaka - Coxs Bazar On 19-04-2022</h1>
         <h1
           class="font-bold flex gap-x-2 items-center text-2xl md:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
