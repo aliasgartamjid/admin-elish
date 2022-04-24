@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../../dist/output.css" rel="stylesheet" />
+    <title>Elish Paribahan</title>
+  </head>
+  <body>
+    <div>
+      <!-- Call Now -->
+      <nav class="py-3 px-5">
+        <div
+          class="flex justify-between items-center w-full border-b border-blue-500"
+        >
+          <h1
+            href="tel:01711472684"
+            class="text-[16px] md:text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+          >
+            <a href="tel:01711472684">Call Now : 01711472684</a>
+          </h1>
+          <a
+            href="/admin"
+            class="flex items-center cursor-pointer gap-x-2 text-gray-500 text-xs md:text-sm"
+            ><img
+              width="20"
+              src="https://img.icons8.com/ios/50/000000/login-rounded-right--v1.png"
+            />
+            Login</a
+          >
+        </div>
+      </nav>
+      <!-- Actual Nav -->
+      <nav class="flex justify-between px-5 items-center py-5 shadow-lg">
+        <a href="../user/Home.html" class="cursor-pointer">
+          <h1
+            class="font-bold flex gap-x-2 items-center text-lg md:text-xl lg:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+          >
+            <img
+              src="../../../images/elishLogo.png"
+              class="w-[120px] h-[50px] md:w-[240px] md:h-[80px] rounded-md"
+              alt=""
+            />
+            Elish Paribahan
+          </h1>
+        </a>
+        <div
+          class="hidden md:flex items-center space-x-8 md:text-lg text-gray-600"
+        >
+          <a href="" class="flex gap-x-1"
+            ><img src="../../../images/homeIcon.svg" alt="" />
+            <span class="border-b-2 border-blue-400">Home</span>
+          </a>
+          <a href="../user/OurService.html" class="hover:underline"
+            >Our Service</a
+          >
+          <a href="" class="hover:underline">Contact Us</a>
+          <a href="" class="hover:underline">Print E-Ticket</a>
+        </div>
+        <div class="flex md:hidden cursor-pointer" onclick="hamburgerMenu()">
+          <img src="../../../images/hamburger-menu-svgrepo-com.svg" alt="" />
+        </div>
+      </nav>
+      <!-- HamburgerMenu Options -->
+      <div class="bg-white hidden shadow-lg hamburger">
+        <div
+          class="flex flex-col justify-center items-center space-y-5 text-lg py-10 text-gray-600"
+        >
+          <a href="../user/Home.html" class="border-b-2 border-blue-400"
+            >Home</a
+          >
+          <a href="../user/OurService.html" class="hover:underline"
+            >Our Service</a
+          >
+          <a href="" class="hover:underline">Contact Us</a>
+          <a href="" class="hover:underline">Print E-Ticket</a>
+        </div>
+      </div>
+      <!-- Main Section -->
+      <div class="shadow-2xl mx-2 md:mx-10 bg-white mt-3 mb-10 py-4 rounded-md">
+        <div class="">
+          <!-- Heading -->
+          <div class="py-1 bg-blue-100 rounded-md">
+            <h1
+              class="font-bold px-2 py-2 flex gap-x-2 items-center text-2xl md:text-3xl lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+            >
+              Booking Details
+            </h1>
+          </div>
+          <!-- Passenger Details & Other Details -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 p-2 gap-x-2 md:divide-x-2 mx-1 border border-gray-400 mt-3 rounded-md"
+          >
+            <!-- Passenger Details -->
+            <div class="flex flex-col space-y-3">
+              <div class="py-2 px-2">
+                <h1
+                  class="font-bold text-xl md:text-2xl lg:text-3xl text-gray-600"
+                >
+                  Passenger Details
+                </h1>
+              </div>
+              <form class="flex px-3 flex-col space-y-3">
+                <!-- Name -->
+                <div class="flex flex-col justify-center gap-y-2">
+                  <label
+                    for=""
+                    class="font-bold text-gray-500 text-lg md:text-xl"
+                    >Name :</label
+                  >
+                  <input
+                    placeholder="Enter your name"
+                    type="text"
+                    onchange="getName(event)"
+                    required
+                    class="w-full focus:outline-none shadow-lg text-gray-600 rounded-md border-2 p-2 text-sm md:text-lg border-blue-400 bg-transparent"
+                  />
+                </div>
+                <!-- Number -->
+                <div class="flex flex-col justify-center gap-y-1">
+                  <label
+                    for=""
+                    class="font-bold text-gray-500 text-lg md:text-xl"
+                    >Mobile<span class="ml-1 text-red-500">*</span> :</label
+                  >
+                  <input
+                    placeholder="Enter your number"
+                    type="text"
+                    onchange="checkNumber(event)"
+                    maxlength="20"
+                    required
+                    class="w-full focus:outline-none shadow-lg text-gray-600 rounded-md border-2 p-2 text-sm md:text-lg border-blue-400 bg-transparent"
+                  />
+                  <p class="text-red-500 inValid hidden">
+                    Invalid Number! Please enter correct number
+                  </p>
+                </div>
+                <!-- Email -->
+                <div class="flex flex-col justify-center gap-y-1">
+                  <label
+                    for=""
+                    class="font-bold text-gray-500 text-lg md:text-xl"
+                    >Email :</label
+                  >
+                  <input
+                    placeholder="Enter your email"
+                    type="email"
+                    onchange="getEmail(event)"
+                    class="w-full focus:outline-none shadow-lg text-gray-600 rounded-md border-2 p-2 text-sm md:text-lg border-blue-400 bg-transparent"
+                  />
+                </div>
+                <!-- Payment Method -->
+                <div class="flex flex-col justify-center gap-y-1">
+                  <label
+                    for=""
+                    class="font-bold text-gray-500 text-lg md:text-xl"
+                    >Payment Method :</label
+                  >
+                  <select
+                    name=""
+                    onchange="selectedPayment(event)"
+                    class="w-full focus:outline-none text-sm text-gray-600 border-2 rounded-md p-2 md:text-lg border-blue-400 bg-transparent"
+                  >
+                    <option selected="">Please Select</option>
+                    <option value="volvo">BKASH</option>
+                    <option value="volvo">NAGAD</option>
+                    <!-- <option value="volvo">CASH</option> -->
+                  </select>
+                </div>
+              </form>
+            </div>
+            <!-- Journet Details And Fair Details -->
+            <div class="flex flex-col space-y-3 px-4">
+              <div class="flex flex-col gap-y-1">
+                <div class="">
+                  <h1
+                    class="font-bold text-xl md:text-2xl lg:text-3xl text-gray-600"
+                  >
+                    Journey Details
+                  </h1>
+                </div>
+                <div class="flex flex-col space-y-3">
+                  <div>
+                    <h1 class="font-bold text-gray-500 text-lg md:text-xl">
+                      Depurture : DHAKA-SHYLHET
+                    </h1>
+                  </div>
+                  <div>
+                    <h1 class="font-bold text-gray-500 text-lg md:text-xl">
+                      Depurture Date : dd/mm/yy
+                    </h1>
+                  </div>
+                  <div>
+                    <h1 class="font-bold text-gray-500 text-lg md:text-xl">
+                      Bus Type : AC
+                    </h1>
+                  </div>
+                  <div>
+                    <h1 class="font-bold text-gray-500 text-lg md:text-xl">
+                      Selected Seats : A1, B2
+                    </h1>
+                  </div>
+                  <div>
+                    <h1 class="font-bold text-gray-500 text-lg md:text-xl">
+                      Boarding Counter : CounterrB
+                    </h1>
+                  </div>
+                  <div>
+                    <h1 class="font-bold text-gray-500 text-lg md:text-xl">
+                      Dropping Counter : CounterrD
+                    </h1>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-y-1">
+                <div class="py-2 border-t border-gray-400">
+                  <h1
+                    class="font-bold text-xl md:text-2xl lg:text-3xl text-gray-600"
+                  >
+                    Fare Details
+                  </h1>
+                </div>
+                <div class="flex justify-between items-center">
+                  <div class="">
+                    <div>
+                      <h1 class="font-bold text-gray-500 text-lg md:text-xl">
+                        Ticket Price (BDT)
+                      </h1>
+                    </div>
+                    <div>
+                      <h1 class="font-bold text-gray-500 text-lg md:text-xl">
+                        Convenience Fee (BDT)
+                      </h1>
+                    </div>
+                    <div>
+                      <h1 class="font-bold text-gray-500 text-lg md:text-xl">
+                        Total Fee (BDT)
+                      </h1>
+                    </div>
+                  </div>
+                  <div class="bg-gray-400/50 w-0.5 h-full"></div>
+                  <div>
+                    <div>
+                      <h1 class="font-bold text-gray-500 text-lg md:text-xl">
+                        1200
+                      </h1>
+                    </div>
+                    <div>
+                      <h1 class="font-bold text-gray-500 text-lg md:text-xl">
+                        00
+                      </h1>
+                    </div>
+                    <div>
+                      <h1 class="font-bold text-gray-500 text-lg md:text-xl">
+                        1200
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer -->
+      <footer
+        class="py-4 mt-5 w-[95vw] md:max-w-6xl mx-auto flex flex-col space-y-8 items-center justify-center"
+      >
+        <div>
+          <h1
+            class="font-bold text-3xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
+          >
+            Connect With Us
+          </h1>
+        </div>
+        <div
+          class="flex flex-col items-center lg:items-start lg:flex-row md:space-x-10 space-y-4 lg:space-y-0"
+        >
+          <div>
+            <a
+              href="https://www.facebook.com/elishparibahan"
+              target="_blank"
+              class="flex items-center gap-x-2"
+              href=""
+              ><img
+                src="https://img.icons8.com/fluency/48/000000/facebook-new.png"
+                alt=""
+              />
+              <span
+                class="font-bold text-[16px] md:text-lg lg:text-xl hover:underline"
+                >www.facebook.com/elishparibahan</span
+              ></a
+            >
+          </div>
+          <div>
+            <a
+              href="https://www.google.com/maps?q=Elish+Paribahan,+Jatrabari,+1232&ftid=0x3755b959443288c9:0xd66c24c0e160c091&hl=en-BD&gl=bd&entry=gps&lucs=s2se,a1&shorturl=1"
+              target="_blank"
+              class="flex items-center gap-x-2"
+              href=""
+              ><img
+                src="https://img.icons8.com/fluency/48/000000/google-maps-new.png"
+                alt=""
+              />
+              <span
+                class="font-bold text-[16px] md:text-lg lg:text-xl hover:underline"
+                >Location</span
+              ></a
+            >
+          </div>
+          <div>
+            <a
+              href="mailto:shahidul.elish@gmail.com"
+              target="_blank"
+              class="flex items-center gap-x-2"
+              href=""
+              ><img
+                src="https://img.icons8.com/color/48/000000/gmail-new.png"
+                alt=""
+              />
+              <span
+                class="font-bold text-[16px] md:text-lg lg:text-xl hover:underline"
+                >shahidul.elish@gmail.com</span
+              ></a
+            >
+          </div>
+          <div>
+            <a
+              href="tel:01711472684"
+              target="_blank"
+              class="flex items-center gap-x-2"
+              href=""
+              ><img
+                src="https://img.icons8.com/ios/50/000000/callback.png"
+                class="w-11 h-11"
+              />
+              <span
+                class="font-bold text-[16px] md:text-lg lg:text-xl hover:underline"
+                >01711472684</span
+              ></a
+            >
+          </div>
+        </div>
+      </footer>
+      <div class="mt-3 flex justify-center py-4">
+        <p class="text-gray-600 text-sm">DEVELOPED BY BotSofware</p>
+      </div>
+    </div>
+  </body>
+  <script src="../../js/bookingDetails.js"></script>
+</html>

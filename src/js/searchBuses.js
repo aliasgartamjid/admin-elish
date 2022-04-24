@@ -243,9 +243,9 @@ busesCol.innerHTML = buses
     >
       <div class="col-span-1 gap-y-2 md:gap-y-0 md:col-span-2">
         <h1 class='font-bold text-xl text-gray-600 md:hidden'>Starting Time : ${bus.boardingPoints[0][1]}</h1>
+        <h1>Starting Point : ${bus.boardingPoints[0][0]}</h1>
         <h1 class="">${bus.coachNo}</h1>
         <h1>Bus Type : ${bus.busType}</h1>
-        <h1>Starting Point : ${bus.boardingPoints[0][0]}</h1>
       </div>
       <div>
         <h1 class='font-bold text-xl text-gray-600 hidden md:flex'>Starting Time : ${bus.boardingPoints[0][1]}</h1>
