@@ -1,4 +1,5 @@
 // Buses from database
+// {{ buses | safe }}
 const buses = [
   {
     coachNo: "Coach No: 305-DHA-BAR-M",
@@ -95,6 +96,22 @@ const getData = (e) => {
       selectedDroppingPointAndTime,
       selectedCoachNo
     );
+
+    // window.location.assign(
+    //   "{% url 'BusSchedule:booking' %}?price=" + selectedBoardingPointAndTime
+    // );
+    // // axios({
+    // //   method: "post",
+    // //   url: "{% url 'BusSchedule:booking' %}",
+    // //   data: data,
+    // //   headers: { "Content-Type": "multipart/form-data", },
+    // // }).then(function (response){
+    // //   //handle success
+    // //   window.location.assign("{% url 'BusSchedule:booking' %}?price="+selectedBoardingPointAndTime)
+    // // }).catch(function (response) {
+    // //     //handle error
+    // //     alert("Request FAILED, Try again !")
+    // //   });
   } else {
     alert("A Field is Missing");
   }
