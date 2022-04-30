@@ -71,6 +71,7 @@ let totalSelectedSeats = "";
 let totalAmountofSeats = "";
 let selectedBoardingPointAndTime = "";
 let selectedDroppingPointAndTime = "";
+let selectedCoachNo = "";
 
 const getData = (e) => {
   const busNo =
@@ -81,7 +82,8 @@ const getData = (e) => {
   if (
     selectedSeats.length > 0 &&
     selectedBoardingPointAndTime &&
-    selectedDroppingPointAndTime
+    selectedDroppingPointAndTime &&
+    selectedCoachNo
   ) {
     totalSelectedSeats = selectedSeats.length;
     totalAmountofSeats = totalSelectedSeats * buses[busNo].fare;
@@ -90,10 +92,11 @@ const getData = (e) => {
       totalSelectedSeats,
       totalAmountofSeats,
       selectedBoardingPointAndTime,
-      selectedDroppingPointAndTime
+      selectedDroppingPointAndTime,
+      selectedCoachNo
     );
   } else {
-    alert("Please Select A Seat and Boarding Point");
+    alert("A Field is Missing");
   }
 };
 
@@ -420,31 +423,13 @@ buses.forEach((bus, index) => {
 });
 
 const ViewSeats = (e) => {
-  // Delete show selected seats
-  buses.forEach((bus, index) => {
-    const showSelectedSeats = document.querySelector(`#selectedSeats-${index}`);
-    showSelectedSeats.classList.add("hidden");
-    showSelectedSeats.classList.remove("flex");
-  });
-
-  // Turns seat white after closing seats of a certain bus
-  if (selectedSeats.length > 0) {
-    selectedSeats.forEach((seat) => {
-      for (let i = 0; i < buses.length; i++) {
-        if (i !== e.target.name) {
-          let changeRestButton = document.querySelector(`.bus-${i}-${seat}`);
-          changeRestButton.classList.remove("bg-green-500");
-          changeRestButton.classList.add("bg-white");
-          changeRestButton.classList.remove("text-white");
-          changeRestButton.classList.add("text-black");
-        }
-      }
-    });
-  }
-
   // View Seats
-
   const busSeat = document.querySelector(`.SeatsBus-${e.target.name}`);
+  const busNo =
+    e.composedPath()[0].classList[1].length <= 17
+      ? e.composedPath()[0].classList[1].slice(16, 17)
+      : e.composedPath()[0].classList[1].slice(16, 18);
+
   const openOrCloseViews = document.querySelector(
     `.viewSeatsButton-${e.target.name}`
   );
@@ -463,9 +448,34 @@ const ViewSeats = (e) => {
     });
     openOrCloseViews.innerText = "Close Seats";
     selectedBoardingPointAndTime = "";
+    selectedCoachNo = buses[busNo].coachNo;
   } else {
     busSeat.classList.add("hidden");
     openOrCloseViews.innerText = "View Seats";
+  }
+
+  // Delete show selected seats
+  buses.forEach((bus, index) => {
+    const showSelectedSeats = document.querySelector(`#selectedSeats-${index}`);
+    showSelectedSeats.classList.add("hidden");
+    showSelectedSeats.classList.remove("flex");
+  });
+
+  // Turns seat white after closing seats of a certain bus
+  if (selectedSeats.length > 0) {
+    selectedSeats.forEach((seat) => {
+      for (let i = 0; i < buses.length; i++) {
+        if (i != e.target.name) {
+          let changeRestButton = document.querySelector(`.bus-${i}-${seat}`);
+          if (changeRestButton) {
+            changeRestButton.classList.remove("bg-green-500");
+            changeRestButton.classList.add("bg-white");
+            changeRestButton.classList.remove("text-white");
+            changeRestButton.classList.add("text-black");
+          }
+        }
+      }
+    });
   }
 
   selectedSeats = [];
