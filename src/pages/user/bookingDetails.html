@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- {% load static tailwind_tags %} {% load static %} -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../../dist/output.css" rel="stylesheet" />
+    <!-- <link href="{% static 'css/dist/output.css' %}" rel="stylesheet" /> -->
+    <link href="/dist/output.css" rel="stylesheet" href="" />
     <title>Elish Paribahan</title>
   </head>
   <body>
@@ -38,7 +40,7 @@
             class="font-bold flex gap-x-2 items-center text-lg md:text-xl lg:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
           >
             <img
-              src="../../../images/elishLogo.png"
+              src="{% static 'images/elishLogo.png' %}"
               class="w-[120px] h-[50px] md:w-[240px] md:h-[80px] rounded-md"
               alt=""
             />
@@ -49,7 +51,7 @@
           class="hidden md:flex items-center space-x-8 md:text-lg text-gray-600"
         >
           <a href="" class="flex gap-x-1"
-            ><img src="../../../images/homeIcon.svg" alt="" />
+            ><img src="{% static 'images/homeIcon.svg' %}" alt="" />
             <span class="border-b-2 border-blue-400">Home</span>
           </a>
           <a href="../user/OurService.html" class="hover:underline"
@@ -59,7 +61,10 @@
           <a href="" class="hover:underline">Print E-Ticket</a>
         </div>
         <div class="flex md:hidden cursor-pointer" onclick="hamburgerMenu()">
-          <img src="../../../images/hamburger-menu-svgrepo-com.svg" alt="" />
+          <img
+            src="{% static 'images/hamburger-menu-svgrepo-com.svg' %}"
+            alt=""
+          />
         </div>
       </nav>
       <!-- HamburgerMenu Options -->
@@ -67,7 +72,9 @@
         <div
           class="flex flex-col justify-center items-center space-y-5 text-lg py-10 text-gray-600"
         >
-          <a href="../user/Home.html" class="border-b-2 border-blue-400"
+          <a
+            href="{% url 'BusSchedule:home-page' %}"
+            class="border-b-2 border-blue-400"
             >Home</a
           >
           <a href="../user/OurService.html" class="hover:underline"
@@ -170,8 +177,8 @@
                 </div>
               </form>
             </div>
-            <!-- Journet Details And Fair Details gets from previous pages -->
-            <div class="flex flex-col space-y-3 px-4 py-4 md:py-0">
+            <!-- Journet Details And Fair Details -->
+            <div class="flex flex-col space-y-3 px-4">
               <div class="flex flex-col gap-y-1">
                 <div class="">
                   <h1
@@ -183,17 +190,17 @@
                 <div class="flex flex-col space-y-3">
                   <div>
                     <h1 class="font-bold text-gray-500 text-lg md:text-xl">
-                      Depurture : DHAKA-SHYLHET
+                      Depurture : {{departure}}
                     </h1>
                   </div>
                   <div>
                     <h1 class="font-bold text-gray-500 text-lg md:text-xl">
-                      Depurture Date : dd/mm/yy
+                      Depurture Date : {{date}}
                     </h1>
                   </div>
                   <div>
                     <h1 class="font-bold text-gray-500 text-lg md:text-xl">
-                      Coach No : 305-DHA-BAR-M
+                      Coach No : {{coach_no}}
                     </h1>
                   </div>
                   <div>
@@ -203,17 +210,17 @@
                   </div>
                   <div>
                     <h1 class="font-bold text-gray-500 text-lg md:text-xl">
-                      Selected Seats : A1, B2
+                      Selected Seats : {{selected_seats}}
                     </h1>
                   </div>
                   <div>
                     <h1 class="font-bold text-gray-500 text-lg md:text-xl">
-                      Boarding Counter : CounterrB
+                      Boarding Counter : {{boarding_counter}}
                     </h1>
                   </div>
                   <div>
                     <h1 class="font-bold text-gray-500 text-lg md:text-xl">
-                      Dropping Counter : CounterrD
+                      Dropping Counter : {{dropping_counter}}
                     </h1>
                   </div>
                 </div>
@@ -248,7 +255,7 @@
                   <div>
                     <div>
                       <h1 class="font-bold text-gray-500 text-lg md:text-xl">
-                        1200
+                        {{price}}
                       </h1>
                     </div>
                     <div>
@@ -258,7 +265,7 @@
                     </div>
                     <div>
                       <h1 class="font-bold text-gray-500 text-lg md:text-xl">
-                        1200
+                        {{total_price}}
                       </h1>
                     </div>
                   </div>
@@ -353,5 +360,5 @@
       </div>
     </div>
   </body>
-  <script src="../../js/bookingDetails.js"></script>
+  <script src="{% static 'js/bookingDetails.js' %}"></script>
 </html>

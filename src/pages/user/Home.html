@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% load static %}
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../../dist/output.css" rel="stylesheet" />
+    <link href="{% static 'css/dist/output.css' %}" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
     />
     <title>Elish Paribahan</title>
   </head>
+
   <body>
     <div class="">
       <!-- Call Now -->
@@ -25,7 +27,7 @@
             <a href="tel:01711472684">Call Now : 01711472684</a>
           </h1>
           <a
-            href="/admin"
+            href="{% url 'Users:login' %}"
             class="flex items-center cursor-pointer gap-x-2 text-gray-500 text-xs md:text-sm"
             ><img
               width="20"
@@ -37,12 +39,12 @@
       </nav>
       <!-- Actual Nav -->
       <nav class="flex justify-between px-5 items-center py-5 shadow-lg">
-        <a href="../user/Home.html" class="cursor-pointer">
+        <a href="{% url 'BusSchedule:home-page' %}" class="cursor-pointer">
           <h1
             class="font-bold flex gap-x-2 items-center text-lg md:text-xl lg:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-500"
           >
             <img
-              src="../../../images/elishLogo.png"
+              src="{% static 'images/elishLogo.png' %}"
               class="w-[120px] h-[50px] md:w-[240px] md:h-[80px] rounded-md"
               alt=""
             />
@@ -53,17 +55,20 @@
           class="hidden md:flex items-center space-x-8 md:text-lg text-gray-600"
         >
           <a href="" class="flex gap-x-1"
-            ><img src="../../../images/homeIcon.svg" alt="" />
+            ><img src="{% static 'images/homeIcon.svg' %}" alt="" />
             <span class="border-b-2 border-blue-400">Home</span>
           </a>
-          <a href="../user/OurService.html" class="hover:underline"
+          <a href="{% url 'BusSchedule:service' %}" class="hover:underline"
             >Our Service</a
           >
           <a href="" class="hover:underline">Contact Us</a>
           <a href="" class="hover:underline">Print E-Ticket</a>
         </div>
         <div class="flex md:hidden cursor-pointer" onclick="hamburgerMenu()">
-          <img src="../../../images/hamburger-menu-svgrepo-com.svg" alt="" />
+          <img
+            src="{% static 'images/hamburger-menu-svgrepo-com.svg' %}"
+            alt=""
+          />
         </div>
       </nav>
       <!-- HamburgerMenu Options -->
@@ -71,10 +76,12 @@
         <div
           class="flex flex-col justify-center items-center space-y-5 text-lg py-10 text-gray-600"
         >
-          <a href="../user/Home.html" class="border-b-2 border-blue-400"
+          <a
+            href="{% url 'BusSchedule:home-page' %}"
+            class="border-b-2 border-blue-400"
             >Home</a
           >
-          <a href="../user/OurService.html" class="hover:underline"
+          <a href="{% url 'BusSchedule:service' %}" class="hover:underline"
             >Our Service</a
           >
           <a href="" class="hover:underline">Contact Us</a>
@@ -87,7 +94,8 @@
         <div
           class="shadow-2xl w-11/12 font-bold md:max-w-7xl px-1 py-4 md:px-4 md:py-4 mx-auto mt-2 md:mt-4 lg:mt-8 rounded-lg border-2 border-gray-500 bg-gradient-to-r from-gray-100 to-gray-300"
         >
-          <form method="post" action="">
+          <form method="post" action="{% url 'BusSchedule:bus-search' %}">
+            {% csrf_token %}
             <div class="flex w-full flex-col space-y-3 px-2 md:px-4 py-4">
               <!-- AC CHECK -->
               <div>
@@ -99,6 +107,7 @@
                       class="flex justify-center items-center w-6 h-6 border-2 mr-1 border-blue-500 rounded-full text-center"
                     >
                       <input
+                        name="all"
                         class="checkboxOne appearance-none w-4 h-4 rounded-full"
                         type="checkbox"
                         onchange="checkboxOne(event)"
@@ -113,6 +122,7 @@
                       class="flex justify-center items-center w-6 h-6 border-2 mr-1 border-blue-500 rounded-full text-center"
                     >
                       <input
+                        name="ac"
                         class="checkboxTwo appearance-none w-4 h-4 rounded-full"
                         type="checkbox"
                         onchange="checkboxTwo(event)"
@@ -127,6 +137,7 @@
                       class="flex justify-center items-center w-6 h-6 border-2 mr-1 border-blue-500 rounded-full text-center"
                     >
                       <input
+                        name="non-ac"
                         class="checkboxThree appearance-none w-4 h-4 rounded-full"
                         type="checkbox"
                         onchange="checkboxThree(event)"
@@ -144,7 +155,7 @@
                 >
                   <div class="flex items-center gap-x-1">
                     <img
-                      src="../../../images/get-on-bus.svg"
+                      src="{% static 'images/get-on-bus.svg' %}"
                       class="w-7 h-7 md:w-11 md:h-11"
                     />
                     <label
@@ -153,14 +164,17 @@
                       From</label
                     >
                     <select
-                      name=""
+                      name="from"
                       id=""
                       class="w-full focus:outline-none text-gray-600 border-b-2 p-2 text-sm md:text-lg border-blue-400 bg-transparent"
                     >
+                      {% if start_location %}
                       <option selected="">Select City</option>
-                      <option value="volvo">DHAKA</option>
-                      <option value="saab">BARISHAL</option>
-                      <option value="opel">RAJSHAHI</option>
+                      {% for location in start_location %}
+
+                      <option value="{{ location }}">{{ location }}</option>
+
+                      {% endfor %} {% endif %}
                     </select>
                   </div>
                 </div>
@@ -176,14 +190,17 @@
                       >To</label
                     >
                     <select
-                      name=""
+                      name="to"
                       id=""
                       class="w-full focus:outline-none text-gray-600 border-b-2 p-2 text-sm lg:text-lg border-blue-400 bg-transparent"
                     >
+                      {% if end_location %}
                       <option selected="">Select City</option>
-                      <option value="volvo">BARISHAL</option>
-                      <option value="saab">RANGPUR</option>
-                      <option value="opel">DHAKA</option>
+                      {% for location in end_location %}
+
+                      <option value="{{ location }}">{{ location }}</option>
+
+                      {% endfor %} {% endif %}
                     </select>
                   </div>
                 </div>
@@ -200,7 +217,7 @@
                     >
                     <input
                       type="date"
-                      name=""
+                      name="date"
                       id=""
                       class="w-full bg-transparent focus:outline-none text-gray-600 border-b-2 p-2 text-sm lg:text-lg border-blue-400"
                     />
@@ -209,12 +226,11 @@
               </div>
               <div class="flex justify-center">
                 <button
-                  onclick="getData()"
-                  type="button"
+                  type="submit"
                   class="inline-flex items-center justify-center w-4/5 md:w-2/5 px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-sm leading-tight uppercase rounded hover:bg-blue-600 hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                 >
                   <img
-                    src="../../../images/searchIcon.svg"
+                    src="{% static 'images/searchIcon.svg' %}"
                     class="w-5 h-5 md:w-6 md:h-6 mr-1"
                     alt=""
                   />
@@ -233,14 +249,14 @@
               <div class="swiper-slide flex justify-center w-full h-full">
                 <img
                   class="rounded-lg object-scale-down"
-                  src="../../../images/bus01.jpg"
+                  src="{% static 'images/bus01.jpg' %}"
                   alt=""
                 />
               </div>
               <div class="swiper-slide flex justify-center w-full h-full">
                 <img
                   class="rounded-lg object-scale-down"
-                  src="../../../images/bus02.jpg"
+                  src="{% static 'images/bus02.jpg' %}"
                   alt=""
                 />
               </div>
@@ -249,7 +265,7 @@
               >
                 <img
                   class="rounded-lg object-scale-down"
-                  src="../../../images/bus03.jpg"
+                  src="{% static 'images/bus03.jpg' %}"
                   alt=""
                 />
               </div>
@@ -460,5 +476,71 @@
     </div>
   </body>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-  <script src="../../js/Home.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      lazy: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      autoplay: {
+        delay: 4000,
+      },
+    });
+
+    const hamburgerMenu = () => {
+      const hamburger = document.querySelector(".hamburger");
+      if (hamburger.classList.contains("hidden")) {
+        hamburger.classList.remove("hidden");
+      } else {
+        hamburger.classList.add("hidden");
+      }
+    };
+
+    const checkboxOne = (e) => {
+      if (e.target.checked) {
+        document.querySelector(".checkboxOne").classList.add("bg-blue-400");
+        document.querySelector(".checkboxTwo").classList.add("bg-blue-400");
+        document.querySelector(".checkboxThree").classList.add("bg-blue-400");
+        document.querySelector(".checkboxTwo").disabled = true;
+        document.querySelector(".checkboxThree").disabled = true;
+      } else {
+        document.querySelector(".checkboxOne").classList.remove("bg-blue-400");
+        document.querySelector(".checkboxTwo").classList.remove("bg-blue-400");
+        document
+          .querySelector(".checkboxThree")
+          .classList.remove("bg-blue-400");
+        document.querySelector(".checkboxTwo").disabled = false;
+        document.querySelector(".checkboxThree").disabled = false;
+      }
+    };
+
+    const checkboxTwo = (e) => {
+      if (e.target.checked) {
+        document.querySelector(".checkboxTwo").classList.add("bg-blue-400");
+        document.querySelector(".checkboxOne").disabled = true;
+      } else {
+        document.querySelector(".checkboxTwo").classList.remove("bg-blue-400");
+        document.querySelector(".checkboxOne").disabled = false;
+      }
+    };
+
+    const checkboxThree = (e) => {
+      if (e.target.checked) {
+        document.querySelector(".checkboxThree").classList.add("bg-blue-400");
+
+        document.querySelector(".checkboxOne").disabled = true;
+      } else {
+        document
+          .querySelector(".checkboxThree")
+          .classList.remove("bg-blue-400");
+
+        document.querySelector(".checkboxOne").disabled = false;
+      }
+    };
+  </script>
 </html>
